@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body{
+
+  background-color: hsl(240deg, 5.88%, 10%);
+  width: 100vw;
+  height: 100vh;
+                  
+  
+}
