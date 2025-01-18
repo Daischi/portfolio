@@ -91,10 +91,10 @@ export default function Header() {
               {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((item) => (
                 <a
                   key={item}
-                  href="#"
-                  className="text-zinc-900 dark:text-white hover:text-red-800 relative transform transition-transform duration-500 ease-in-out hover:scale-105"
+                  href={item === 'About' ? '#about' : '#'}  // Mudança aqui
+                  className="text-zinc-900 dark:text-white active:scale-125 hover:text-red-800 relative transform transition-transform duration-500 ease-in-out hover:scale-105"
                 >
-                  <span className="relative hover:text-red-800 after:content-[''] after:block after:w-0 after:h-[2px] after:bg-red-600 after:transition-all after:duration-500 after:ease-in-out hover:after:w-full">
+                  <span className=" relative hover:text-red-800 after:content-[''] after:block after:w-0 after:h-[2px] after:bg-red-600 after:transition-all after:duration-500 after:ease-in-out hover:after:w-full">
                     <span className="transition-colors duration-500 ease-in-out">
                       {item}
                     </span>
@@ -102,6 +102,7 @@ export default function Header() {
                 </a>
               ))}
             </nav>
+
 
             <motion.button
               whileHover={{ scale: 1.1 }}
@@ -168,7 +169,7 @@ export default function Header() {
 
 
       <div className="flex justify-center items-center mt-4 overflow-hidden">
-        <main className="w-full max-w-4xl p-6 rounded-lg text-white scale-105 transition-transform duration-300">
+        <main id='about' className="w-full max-w-4xl p-6 rounded-lg text-white scale-105 transition-transform duration-300">
           {/* Título */}
 
           <div className="text-center mb-6">
