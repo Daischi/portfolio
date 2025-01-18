@@ -34,7 +34,7 @@ function SocialIcons() {
           target="_blank"
           rel="noopener noreferrer"
           className={`text-zinc-400 dark:text-zinc-400 ${social.color} dark:hover:text-red-700 transition-colors duration-300`}
-          whileHover={{ scale: 1.2, y: -1}} // Aumenta no hover e move para cima
+          whileHover={{ scale: 1.2, y: -1 }} // Aumenta no hover e move para cima
           whileTap={{ scale: 0.95 }} // Reduz ao clicar
           initial={{ opacity: 0, y: 20 }} // Animação inicial
           animate={{ opacity: 1, y: 0 }} // Animação ao aparecer
@@ -153,6 +153,66 @@ export default function Header() {
           <div className="p-60 bg-zinc-200 rounded-full mt-[-70px]"></div>
         </div>
       </main>
+
+      <div className="flex justify-center items-center mt-4 overflow-hidden">
+        <main className="w-full max-w-4xl p-6 rounded-lg text-white scale-105 transition-transform duration-300">
+          {/* Título */}
+          <div className="text-center mb-6">
+            <h1 className="text-3xl font-bold  mb-12 hover:underline hover:decoration-red-700 transition-transform duration-300">Sobre Mim</h1>
+          </div>
+
+          {/* Layout Principal */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Texto de apresentação na esquerda */}
+            <div className="flex items-center justify-center">
+              <p className="text-lg leading-relaxed text-zinc-400">
+                Olá! Meu nome é Guilherme Poppi, tenho 19 anos sou estudante de Ciência da Computação na Cruzeiro do Sul. Tenho paixão por tecnologia e adoro desenvolver projetos, muitos deles estão disponíveis no meu GitHub.
+
+                <br />
+                <br />
+
+                Atualmente, estou no 5º semestre da faculdade e gosto de combinar meus estudos com meu amor por jogos. Meu maior objetivo é construir uma carreira sólida na área de tecnologia, criando soluções inovadoras e impactando positivamente o mundo.
+
+              </p>
+            </div>
+
+            {/* Divs com caixas na direita */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="p-4 rounded-lg bg-white/5 backdrop-blur-sm">
+              
+              <h1 className='text-red-600 font-bold text-3xl text-center'> 10+ </h1>
+              <p className='text-center text-sm	text-zinc-400'>Tecnologias dominadas</p>
+              
+              
+              </div>
+              <div className="p-4 rounded-lg bg-white/5 backdrop-blur-sm">
+              
+              <h1 className='text-red-600 font-bold text-3xl text-center'> 20+ </h1>
+              <p className='text-center text-sm	text-zinc-400' >Trabalhos postados no Github</p>
+              
+              </div>
+              <div className="p-4 rounded-lg bg-white/5 backdrop-blur-sm">
+              
+              <h1 className='text-red-600 font-bold text-3xl text-center'> 30+ </h1>
+              <p className='text-center text-sm	text-zinc-400' >Horas de codificação semanais</p>
+              
+              
+              </div>
+              <div className="p-4 rounded-lg bg-white/5 backdrop-blur-sm">
+              
+              <h1 className='text-red-600 font-bold text-3xl text-center'> 5+</h1>
+              <p className='text-center text-sm	text-zinc-400' >Cursos Realizados </p>
+              
+              
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+
+
+
+
     </div>
   );
 }
