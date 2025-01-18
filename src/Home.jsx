@@ -158,16 +158,17 @@ export default function Header() {
         <main className="w-full max-w-4xl p-6 rounded-lg text-white scale-105 transition-transform duration-300">
           {/* Título */}
           <div className="text-center mb-6">
-            <h1 className="text-3xl font-bold  mb-12 hover:underline hover:decoration-red-700 transition-transform duration-300">Sobre Mim</h1>
+            <h1 className="text-3xl font-bold  mb-12 ">Sobre Mim</h1>
           </div>
 
           {/* Layout Principal */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Texto de apresentação na esquerda */}
             <div className="flex items-center justify-center">
-              <p className="text-lg leading-relaxed text-zinc-400">
+              <p className="text-base leading-relaxed text-zinc-400">
                 Olá! Meu nome é Guilherme Poppi, tenho 19 anos sou estudante de Ciência da Computação na Cruzeiro do Sul. Tenho paixão por tecnologia e adoro desenvolver projetos, muitos deles estão disponíveis no meu GitHub.
 
+                <br />
                 <br />
                 <br />
 
@@ -178,27 +179,27 @@ export default function Header() {
 
             {/* Divs com caixas na direita */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="p-4 rounded-lg bg-white/5 backdrop-blur-sm">
+              <div className="p-4 rounded-lg bg-white/5 backdrop-blur-sm hover:scale-105 transition-transform duration-200">
               
               <h1 className='text-red-600 font-bold text-3xl text-center'> 10+ </h1>
               <p className='text-center text-sm	text-zinc-400'>Tecnologias dominadas</p>
               
               
               </div>
-              <div className="p-4 rounded-lg bg-white/5 backdrop-blur-sm">
+              <div className="p-4 rounded-lg bg-white/5 backdrop-blur-sm hover:scale-105 transition-transform duration-200">
               
               <h1 className='text-red-600 font-bold text-3xl text-center'> 20+ </h1>
               <p className='text-center text-sm	text-zinc-400' >Trabalhos postados no Github</p>
               
               </div>
-              <div className="p-4 rounded-lg bg-white/5 backdrop-blur-sm">
+              <div className="p-4 rounded-lg bg-white/5 backdrop-blur-sm hover:scale-105 transition-transform duration-200">
               
               <h1 className='text-red-600 font-bold text-3xl text-center'> 30+ </h1>
               <p className='text-center text-sm	text-zinc-400' >Horas de codificação semanais</p>
               
               
               </div>
-              <div className="p-4 rounded-lg bg-white/5 backdrop-blur-sm">
+              <div className="p-4 rounded-lg bg-white/5 backdrop-blur-sm hover:scale-105 transition-transform duration-200 ">
               
               <h1 className='text-red-600 font-bold text-3xl text-center'> 5+</h1>
               <p className='text-center text-sm	text-zinc-400' >Cursos Realizados </p>

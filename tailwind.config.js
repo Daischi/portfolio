@@ -23,7 +23,10 @@ export default {
       borderColor: {
         'card': 'rgb(var(--card-border))',
       },
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif'],
+      },
     },
   },
   plugins: [],
-}
+};
