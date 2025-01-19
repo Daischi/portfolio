@@ -176,7 +176,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <main className="flex flex-col justify-center items-center min-h-screen w-full pt-20">
+      <main id="inicio" className="flex flex-col justify-center items-center min-h-screen w-full pt-20">
         <div className="text-center grid grid-cols-1 md:grid-cols-2 gap-x-56">
           <div className="text-left">
             <h1 className="text-7xl font-bold text-zinc-900 dark:text-white mb-4">
