@@ -88,10 +88,10 @@ export default function Header() {
 
           <div className="flex items-center gap-6">
             <nav className="flex space-x-6 text-lg">
-              {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((item) => (
+              {['Inicio', 'Sobre', 'Habilidades', 'Projetos', 'Contatos'].map((item) => (
                 <a
                   key={item}
-                  href={item === 'About' ? '#about' : '#'}  // Mudança aqui
+                  href={item === 'Sobre' ? '#about' : '#'}  // Mudança aqui
                   className="text-zinc-900 dark:text-white active:scale-125 hover:text-red-800 relative transform transition-transform duration-500 ease-in-out hover:scale-105"
                 >
                   <span className=" relative hover:text-red-800 after:content-[''] after:block after:w-0 after:h-[2px] after:bg-red-600 after:transition-all after:duration-500 after:ease-in-out hover:after:w-full">
@@ -176,7 +176,7 @@ export default function Header() {
             <span data-aos="fade-right" className='underline underline-offset-8 decoration-red-600'>
 
 
-              <h1 className="text-3xl font-bold mb-12">About me</h1>
+              <h1 className="text-3xl font-bold mb-12">Sobre mim</h1>
             </span>
 
           </div>
