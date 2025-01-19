@@ -242,13 +242,15 @@ export default function Home() {
 
       {/* Skills Section */}
       <section id="habilidades" className="min-h-screen  py-20 px-4 md:px-8">
-        <div className="max-w-6xl mx-auto">
+        <div 
+         data-aos="fade-up"className="max-w-6xl mx-auto">
+          
           <span data-aos="fade-up" className="underline underline-offset-8 decoration-red-600">
           <h2 data-aos="fade-right" className="text-4xl font-bold text-white mb-12">Habilidades</h2>
           </span>
           
 
-          <div data-aos="" className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {skillCategories.map((category, index) => (
               <motion.div
                 key={category.title}
@@ -256,22 +258,25 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
                 className="bg-[#242424] p-6 rounded-lg"
+                
               >
                 <h3 className="text-2xl font-semibold text-white mb-6">{category.title}</h3>
                 <div className="space-y-4">
                   {category.skills.map((skill, skillIndex) => (
                     <div key={skill.name} className="space-y-2">
-                      <div className="flex justify-between text-sm">
+                      <div  className="flex justify-between text-sm">
                         <span className="text-gray-300">{skill.name}</span>
                         <span className="text-gray-400">{skill.level}%</span>
                       </div>
                       <motion.div
-                        className="h-2 bg-[#333333] rounded-full overflow-hidden"
+                        
+                        className=" h-2 bg-[#333333] rounded-full overflow-hidden"
                         initial={{ width: 0 }}
                         animate={{ width: "100%" }}
                         transition={{ duration: 0.5, delay: index * 0.2 + skillIndex * 0.1 }}
                       >
                         <motion.div
+                        
                           className="h-full bg-[#dc2626] rounded-full"
                           initial={{ width: 0 }}
                           animate={{ width: `${skill.level}%` }}
