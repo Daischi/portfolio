@@ -228,12 +228,76 @@ export default function Header() {
               </div>
             </div>
           </div>
-          </section>
-
-
-
-        
+        </section>
       </div>
+
+
+      <section className="w-full h -full mt-4">
+
+              
+
+       <div className='mt-80'>     
+      <h1 className="text-3xl font-bold mb-12 flex justify-center">
+            Habilidades
+          </h1>
+
+        <div className='flex justify-center'>
+
+
+          
+
+          <div className='flex justify-around gap-8'>
+
+
+            <div className='bg-white/5 p-32 rounded-2xl'>
+              <h2 className=' flex justify-start text-3xl font-bold'>Back-end</h2>
+              <p>Node.js</p>
+              <p>Python</p>
+              <p>Java</p>
+              <p>SQL</p>
+              <p>MongoDB</p>
+
+            </div >
+            <div className='bg-white/5 p-32 rounded-2xl'>
+              <h2>Front-end</h2>
+              <p>React</p>
+              <p>TypeScript</p>
+              <p>Next.js</p>
+              <p>Tailwind CSS</p>
+              <p>HTML/CSS</p>
+              
+
+            </div>
+
+            <div className='bg-white/5 p-32 rounded-2xl	'>
+              <h2>Tecnologias</h2>
+              <p>Git</p>
+              <p>Docker</p>
+              <p>AWS</p>
+              <p>Figma</p>
+              <p>REST APIs</p>
+
+            </div>
+
+
+
+          </div>
+
+        </div>
+
+
+
+
+      </div>  
+
+
+
+
+
+
+
+
+      </section>
 
 
 
