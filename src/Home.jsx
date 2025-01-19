@@ -169,7 +169,7 @@ export default function Header() {
 
 
       <div className="flex justify-center items-center mt-4 overflow-hidden">
-        <main id='about' className="w-full max-w-4xl p-6 rounded-lg text-white scale-105 transition-transform duration-300">
+        <section id='about' className="w-full max-w-4xl p-6 rounded-lg text-white scale-105 transition-transform duration-300" >
           {/* Título */}
 
           <div className="text-center mb-6">
@@ -228,7 +228,7 @@ export default function Header() {
               </div>
             </div>
           </div>
-        </main>
+          </section>
 
 
 
