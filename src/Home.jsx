@@ -1,5 +1,3 @@
-"use client"
-
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Sun, Moon, Github, Linkedin, Phone } from "lucide-react"
@@ -378,7 +376,7 @@ export default function Home() {
                 href={projects[currentIndex].codeLink} 
                 className="bg-gray-700 text-white px-4 py-2 rounded-md hover:opacity-75 transition"
               >
-                View Code
+               View Code
               </a>
               <a 
                 href={projects[currentIndex].demoLink} 
