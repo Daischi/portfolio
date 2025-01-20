@@ -6,6 +6,10 @@ import { Sun, Moon, Github, Linkedin, Phone } from "lucide-react"
 import AOS from "aos"
 import "aos/dist/aos.css"
 
+
+
+
+
 // Skill categories data
 const skillCategories = [
   {
@@ -61,6 +65,8 @@ function SocialIcons() {
       color: "hover:text-[#A12F2F]",
     },
   ]
+
+  
 
   return (
     <div className="flex gap-6 items-center">
@@ -300,7 +306,7 @@ export default function Home() {
       </section>
 
 
-    <section>
+    <section id="projetos">
 
     
 
