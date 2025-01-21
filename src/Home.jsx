@@ -380,14 +380,14 @@ export default function Home() {
             <div className="flex gap-4">
               <a 
                 href={projects[currentIndex].codeLink} 
-                className="bg-gray-700 text-white px-4 py-2 rounded-md hover:opacity-75 transition"
+                className="hover:bg-slate-500 text-white px-4 py-2 rounded-md hover:opacity-75 transition duration-500 hover:scale-105"
               >
-                <div className="flex justify-center items-center"> <img className="h-8" src={Foto} alt="" />View Code</div>
+                <div className="flex justify-center items-center"> <img className="h-8" src={Foto} alt="Logo git hub" />  Github</div>
                
               </a>
               <a 
                 href={projects[currentIndex].demoLink} 
-                className="bg-red-500 text-white px-4 py-2 rounded-md hover:opacity-75 transition"
+                className="flex items-center bg-red-500 text-white px-4 py-2 rounded-md hover:opacity-75 transition duration-500 hover:scale-105"
               >
                 View Demo
               </a>
@@ -395,7 +395,7 @@ export default function Home() {
           </div>
         </div>
         <button 
-          className="text-2xl text-white hover:opacity-75 transition" 
+          className="text-2xl text-white hover:opacity-75 transition " 
           onClick={nextSlide}
         >
           &gt;
