@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Sun, Moon, Github, Linkedin, Phone } from "lucide-react"
 import AOS from "aos"
 import "aos/dist/aos.css"
+import Foto from "./assets/github.png"
+
 
 const projects = [
   {
@@ -58,6 +60,9 @@ const skillCategories = [
 ]
 
 // Social Icons Component
+
+
+
 function SocialIcons() {
   const socialLinks = [
     {
@@ -79,6 +84,7 @@ function SocialIcons() {
       color: "hover:text-[#A12F2F]",
     },
   ]
+  
 
   
 
@@ -376,7 +382,8 @@ export default function Home() {
                 href={projects[currentIndex].codeLink} 
                 className="bg-gray-700 text-white px-4 py-2 rounded-md hover:opacity-75 transition"
               >
-               View Code
+                <div className="flex justify-center items-center"> <img className="h-8" src={Foto} alt="" />View Code</div>
+               
               </a>
               <a 
                 href={projects[currentIndex].demoLink} 
