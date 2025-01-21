@@ -322,7 +322,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section data-aos='' id="projetos" className="flex flex-col items-center justify-center text-white min-h-screen">
+      <section data-aos="zoom-in"  id="projetos" className="flex flex-col items-center justify-center text-white min-h-screen">
         <motion.span
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -333,7 +333,7 @@ export default function Home() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-4xl font-bold mb-12"
+            className="text-4xl font-bold mb-12 "
           >
             Projetos
           </motion.h2>
@@ -392,7 +392,7 @@ export default function Home() {
                   className="flex gap-2"
                 >
                   {projects[currentIndex].tags.map((tag) => (
-                    <span key={tag} className="bg-red-500 bg-opacity-40 text-xs px-2 py-1 rounded-md text-red-300">
+                    <span key={tag} className="bg-red-500 hover: bg-opacity-40 text-xs px-2 py-1 rounded-md text-red-300 hover:scale-105 cursor-pointer transition-all duration-300 hover:text-red-500">
                       {tag}
                     </span>
                   ))}
@@ -418,7 +418,7 @@ export default function Home() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     href={projects[currentIndex].demoLink}
-                    className="flex items-center bg-red-700 text-white px-4 py-2 rounded-md hover:opacity-75 transition duration-500"
+                    className="flex items-center bg-red-700 text-white px-4 py-2 rounded-md hover:opacity-75 transition duration-300 hover:text-[#222222]"
                   >
                     Web site
                   </motion.a>
