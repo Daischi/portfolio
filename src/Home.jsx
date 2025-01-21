@@ -386,7 +386,7 @@ export default function Home() {
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="text-2xl text-white hover:opacity-75 transition duration-700 hover:bg-white/5 rounded-full p-4"
+            className="text-2xl dark:text-white hover:opacity-75 transition duration-700 dark:hover:bg-white/5 rounded-full p-4 text-slate-950 hover:bg-zinc-100"            
             onClick={prevSlide}
           >
             &lt;
@@ -436,7 +436,7 @@ export default function Home() {
                   className="flex gap-2 "
                 >
                   {projects[currentIndex].tags.map((tag) => (
-                    <span key={tag} className="bg-red-500 hover: bg-opacity-40 text-xs px-2 py-1 rounded-md text-red-300 hover:scale-105 cursor-pointer transition-all duration-300 hover:text-red-500">
+                    <span key={tag} className=" dark:bg-red-600 bg-red-200 text-red-500 hover: dark:bg-opacity-40 text-xs px-2 py-1 rounded-2xl dark:text-red-300 hover:scale-105 cursor-pointer transition-all duration-300 hover:text-red-500">
                       {tag}
                     </span>
                   ))}
@@ -452,7 +452,7 @@ export default function Home() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     href={projects[currentIndex].codeLink}
-                    className="hover:bg-white/5 hover:text-red-500 text-white px-4 py-2 rounded-md transition duration-500 "
+                    className="dark:hover:bg-white/5 hover:text-red-500 dark:text-white dark:bg-transparent bg-slate-950 px-4 py-2 rounded-md transition duration-200 "
                   >
                     <div className="flex justify-center items-center gap-2">
                       <img src={Foto || "/placeholder.svg"} alt="Logo git hub" className="h-5 w-5" />
@@ -463,7 +463,7 @@ export default function Home() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     href={projects[currentIndex].demoLink}
-                    className="flex items-center bg-red-700 text-white px-4 py-2 rounded-md hover:opacity-75 transition duration-300 hover:text-[#222222]"
+                    className="flex items-center bg-red-700 text-white px-4 py-2 rounded-md dark:hover:opacity-80 transition duration-300 dark:hover:text-black"
                     target="_blank"
                   >
                     Web site
@@ -476,7 +476,7 @@ export default function Home() {
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="text-2xl text-white hover:opacity-75 transition duration-700 hover:bg-white/5 rounded-full p-4"
+            className="text-2xl dark:text-white hover:opacity-75 transition duration-700 dark:hover:bg-white/5 rounded-full p-4 text-slate-950 hover:bg-zinc-100"
             onClick={nextSlide}
           >
             &gt;
@@ -486,7 +486,7 @@ export default function Home() {
           {projects.map((_, index) => (
             <motion.span
               key={index}
-              className={`w-3 h-3 rounded-full cursor-pointer transition ${currentIndex === index ? "bg-red-500" : "bg-gray-700"
+              className={`w-3 h-3 rounded-full cursor-pointer transition ${currentIndex === index ? "bg-red-500" : "dark:bg-gray-700 bg-zinc-200"
                 }`}
               onClick={() => setCurrentIndex(index)}
               whileHover={{ scale: 1.2 }}
