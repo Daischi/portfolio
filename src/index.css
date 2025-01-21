@@ -33,4 +33,24 @@ html {
 }
 
 
+::-webkit-scrollbar{
+
+  width: 20px;
+  
+
+}
+
+::-webkit-scrollbar-track{
+
+  
+  height: 5px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+  background: rgb(151, 22, 22);
+  border-radius: 20px;
+
+}
 
