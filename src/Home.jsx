@@ -4,12 +4,12 @@ import { Sun, Moon, Github, Linkedin, Phone } from "lucide-react"
 import AOS from "aos"
 import "aos/dist/aos.css"
 import Foto from "./assets/github.png"
-
+import projetoimg from "./assets/projeto.png"
 
 const projects = [
   {
-    title: "Jogos",
-    description: "A full-stack e-commerce solution with real-time updates and payment integration.",
+    title: "Cadastro de Usuarios",
+    description: "Sistema de cadastro de usuários com front-end em React e back-end em Node.js. Permite cadastrar e validar Nome, idade e E-mail, garantindo consistência dos dados.",
     tags: ["Next.js", "TypeScript", "TailwindCSS"],
     codeLink: "#",
     demoLink: "#",
@@ -348,11 +348,14 @@ export default function Home() {
 
 
 
-      <section id="projetos" className=" flex flex-col items-center justify-center 0 text-white overflow-hidden min-h-screen">
+      <section id="projetos" className=" flex flex-col items-center justify-center 0 text-white min-h-screen">
       <span data-aos="fade-up" className="underline underline-offset-8 decoration-red-600">
             <h2 data-aos="fade-right" className="text-4xl font-bold text-white mb-12">Projetos</h2>
           </span>
-      <div className=" bg-white/5 relative flex items-center gap-4">
+
+
+          
+      <div className="  relative flex items-center gap-4 overflow-hidden w-[65%]">
         <button 
           className="bg-white/5 text-2xl text-white hover:opacity-75 transition" 
           onClick={prevSlide}
@@ -360,13 +363,13 @@ export default function Home() {
           &lt;
         </button>
         
-        <div className="flex flex-col md:flex-row  gap-6 items-center p-6 rounded-lg shadow-lg">
+        <div className="flex flex-col md:flex-row  gap-6 items-center p-6 rounded-lg shadow-lg ">
           <div className="w-[520px] h-80 mr-6  flex items-center justify-center text-gray-400 rounded-md">
-            Image Placeholder
+            <img className="h-full rounded-lg w-full" src={projetoimg} alt="" />
           </div>
           <div className="flex flex-col gap-4">
             <h3 className="text-2xl font-bold">{projects[currentIndex].title}</h3>
-            <p className="text-gray-300">{projects[currentIndex].description}</p>
+            <p className="text-gray-300 w-[550px]"> {projects[currentIndex].description}</p>
             <div className="flex gap-2">
               {projects[currentIndex].tags.map((tag) => (
                 <span 
@@ -380,16 +383,16 @@ export default function Home() {
             <div className="flex gap-4">
               <a 
                 href={projects[currentIndex].codeLink} 
-                className="hover:bg-slate-500 text-white px-4 py-2 rounded-md hover:opacity-75 transition duration-500 hover:scale-105"
+                className="hover:bg-white/5 hover:text-red-500 text-white px-4 py-2 rounded-md transition duration-500 hover:scale-105"
               >
-                <div className="flex justify-center items-center"> <img className="h-8" src={Foto} alt="Logo git hub" />  Github</div>
+                <div className="flex justify-center items-center gap-2"> <img className="h-5" src={Foto} alt="Logo git hub" />  Github</div>
                
               </a>
               <a 
                 href={projects[currentIndex].demoLink} 
                 className="flex items-center bg-red-500 text-white px-4 py-2 rounded-md hover:opacity-75 transition duration-500 hover:scale-105"
               >
-                View Demo
+                Web site
               </a>
             </div>
           </div>
