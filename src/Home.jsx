@@ -26,7 +26,7 @@ const projects = [
     demoLink: "https://tradutor-cxwozngvm-guilherme-poppi-limas-projects.vercel.app/",
     image: tradutor,
   },
-{
+  {
     title: "Poppi Books",
     description: "Poppi Book é um site de venda de livros, oferecendo uma plataforma prática e agradável para explorar e adquirir títulos diversos, com uma navegação fluida em qualquer dispositivo.",
     tags: ["HTML", "JavaScript", "CSS"],
@@ -145,17 +145,44 @@ export default function Home() {
   useEffect(() => {
     AOS.init({ duration: 1000 })
   }, [])
+  const [text, setText] = useState("P");
 
+  const handleClick = () => {
+    setText((prev) => (prev === "P" ? "Poppi" : "P"));
+  };
   return (
-    <div  className="w-full">
+    <div className="w-full">
       {/* Header */}
       <header className="fixed top-0 left-0 w-full bg-opacity-70 dark:bg-opacity-70 backdrop-blur-sm bg-white dark:bg-zinc-900 shadow-md z-50">
         <div className="flex justify-between items-center max-w-7xl mx-auto px-4 py-5">
-          <h1 className="text-xl font-bold text-zinc-900 dark:text-white transition-colors hover:scale-105">
-            <span className="hover:text-red-800 transition-colors duration-500 ease-in-out cursor-pointer">
-              &lt;/ <span className="text-red-500">P</span>&gt;
-            </span>
-          </h1>
+        <motion.button
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      onClick={handleClick}
+      className="focus:outline-none"
+    >
+      <h1 className="text-xl font-bold text-zinc-900 dark:text-white transition-all duration-500 hover:scale-105 focus:scale-125">
+        <span className="hover:text-red-800 focus:text-red-800 transition-colors duration-500 ease-in-out cursor-pointer">
+          <a href="#inicio" className="relative inline-block">
+            &lt;/ 
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={text}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 5 }}
+                exit={{ opacity: 0, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-red-500 transition-all duration-300 hover:text-white"
+              >
+                {text}
+              </motion.span>
+            </AnimatePresence>
+            &gt;
+          </a>
+        </span>
+      </h1>
+    </motion.button>
+
 
           <div className="flex items-center gap-6">
             <nav className="flex space-x-6 text-lg">
@@ -163,6 +190,7 @@ export default function Home() {
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
+
                   className="text-zinc-900 dark:text-white active:scale-125 hover:text-red-800 relative transform transition-transform duration-500 ease-in-out hover:scale-105"
                 >
                   <span className="relative hover:text-red-800 after:content-[''] after:block after:w-0 after:h-[2px] after:bg-red-600 after:transition-all after:duration-500 after:ease-in-out hover:after:w-full">
@@ -334,7 +362,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section data-aos="zoom-in"  id="projetos" className="flex flex-col items-center justify-center text-white min-h-screen">
+      <section data-aos="zoom-in" id="projetos" className="flex flex-col items-center justify-center text-white min-h-screen">
         <motion.span
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -417,7 +445,7 @@ export default function Home() {
                   className="flex gap-4"
                 >
                   <motion.a
-                    target="_blank" 
+                    target="_blank"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     href={projects[currentIndex].codeLink}
@@ -455,9 +483,8 @@ export default function Home() {
           {projects.map((_, index) => (
             <motion.span
               key={index}
-              className={`w-3 h-3 rounded-full cursor-pointer transition ${
-                currentIndex === index ? "bg-red-500" : "bg-gray-700"
-              }`}
+              className={`w-3 h-3 rounded-full cursor-pointer transition ${currentIndex === index ? "bg-red-500" : "bg-gray-700"
+                }`}
               onClick={() => setCurrentIndex(index)}
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.8 }}
