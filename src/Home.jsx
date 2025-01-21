@@ -9,22 +9,20 @@ import projetoimg from "./assets/projeto.png"
 const projects = [
   {
     title: "Cadastro de Usuarios",
-    description: "Sistema de cadastro de usuários com front-end em React e back-end em Node.js. Permite cadastrar e validar Nome, idade e E-mail, garantindo consistência dos dados.",
+    description:
+      "Sistema de cadastro de usuários com front-end em React e back-end em Node.js. Permite cadastrar e validar Nome, idade e E-mail, garantindo consistência dos dados.",
     tags: ["Next.js", "TypeScript", "TailwindCSS"],
     codeLink: "#",
     demoLink: "#",
   },
-    {title: "E-commerce Platform",
+  {
+    title: "E-commerce Platform",
     description: "A full-stack e-commerce solution with real-time updates and payment integration.",
     tags: ["Next.js", "TypeScript", "TailwindCSS"],
     codeLink: "#",
-    demoLink: "#"},
-
-];
-
-
-
-
+    demoLink: "#",
+  },
+]
 
 // Skill categories data
 const skillCategories = [
@@ -34,10 +32,6 @@ const skillCategories = [
       { name: "React/Next.js", level: 90 },
       { name: "Javascript", level: 85 },
       { name: "Tailwind CSS", level: 95 },
-
-
-
-
     ],
   },
   {
@@ -46,7 +40,6 @@ const skillCategories = [
       { name: "MongoDB/SQL", level: 80 },
       { name: "Python", level: 90 },
       { name: "Java", level: 80 },
-
     ],
   },
   {
@@ -60,8 +53,6 @@ const skillCategories = [
 ]
 
 // Social Icons Component
-
-
 
 function SocialIcons() {
   const socialLinks = [
@@ -84,9 +75,6 @@ function SocialIcons() {
       color: "hover:text-[#A12F2F]",
     },
   ]
-  
-
-  
 
   return (
     <div className="flex gap-6 items-center">
@@ -111,16 +99,15 @@ function SocialIcons() {
 }
 
 export default function Home() {
-
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0)
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
-  };
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length)
+  }
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + projects.length) % projects.length);
-  };
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + projects.length) % projects.length)
+  }
 
   const [isDark, setIsDark] = useState(true)
 
@@ -279,153 +266,191 @@ export default function Home() {
 
       {/* Skills Section */}
 
-
-      
       <section id="habilidades" className="mb-56 mt-20 py-20 px-4 md:px-8 overflow-hidden">
-        <div
-          data-aos="fade-up " className="max-w-6xl mx-auto">
-
+        <div data-aos="fade-up " className="max-w-6xl mx-auto">
           <span data-aos="fade-up" className="underline underline-offset-8 decoration-red-600">
-            <h2 data-aos="fade-right" className="text-4xl font-bold text-white mb-12">Habilidades</h2>
+            <h2 data-aos="fade-right" className="text-4xl font-bold text-white mb-12">
+              Habilidades
+            </h2>
           </span>
 
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-  {skillCategories.map((category, index) => (
-    <motion.div
-      key={category.title}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: 1.06 }} // Adiciona o efeito de escala ao passar o mouse
-      transition={{ duration: 0.8, type: "spring" }} // Controla a duração e o tipo de animação
-      className="bg-[#242424] p-6 rounded-lg"
-    >
-      <h3 className="text-2xl font-semibold text-white mb-6">{category.title}</h3>
-      <div className="space-y-4">
-        {category.skills.map((skill, skillIndex) => (
-          <div key={skill.name} className="space-y-2">
-            <div className="flex justify-between text-sm">
-              <span className="text-gray-300">{skill.name}</span>
-              <span className="text-gray-400">{skill.level}%</span>
-            </div>
-            <motion.div
-              className="h-2 bg-[#333333] rounded-full overflow-hidden"
-              initial={{ width: 0 }}
-              whileInView={{ width: "100%" }}
-              viewport={{ once: false }}
-              transition={{
-                duration: 1.5,
-                delay: index * 0.2 + skillIndex * 0.1,
-              }}
-            >
+            {skillCategories.map((category, index) => (
               <motion.div
-                className="h-full bg-[#dc2626] rounded-full"
-                initial={{ width: 0 }}
-                whileInView={{ width: `${skill.level}%` }}
-                viewport={{ once: false }}
-                transition={{
-                  duration: 1.5,
-                  delay: index * 0.2 + skillIndex * 0.1,
-                }}
-              />
-            </motion.div>
+                key={category.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.06 }} // Adiciona o efeito de escala ao passar o mouse
+                transition={{ duration: 0.8, type: "spring" }} // Controla a duração e o tipo de animação
+                className="bg-[#242424] p-6 rounded-lg"
+              >
+                <h3 className="text-2xl font-semibold text-white mb-6">{category.title}</h3>
+                <div className="space-y-4">
+                  {category.skills.map((skill, skillIndex) => (
+                    <div key={skill.name} className="space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span className="text-gray-300">{skill.name}</span>
+                        <span className="text-gray-400">{skill.level}%</span>
+                      </div>
+                      <motion.div
+                        className="h-2 bg-[#333333] rounded-full overflow-hidden"
+                        initial={{ width: 0 }}
+                        whileInView={{ width: "100%" }}
+                        viewport={{ once: false }}
+                        transition={{
+                          duration: 1.5,
+                          delay: index * 0.2 + skillIndex * 0.1,
+                        }}
+                      >
+                        <motion.div
+                          className="h-full bg-[#dc2626] rounded-full"
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${skill.level}%` }}
+                          viewport={{ once: false }}
+                          transition={{
+                            duration: 1.5,
+                            delay: index * 0.2 + skillIndex * 0.1,
+                          }}
+                        />
+                      </motion.div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
           </div>
-        ))}
-      </div>
-    </motion.div>
-  ))}
-</div>
-
         </div>
       </section>
 
-
-
-
-
-
-
-
-
-
-      <section id="projetos" className=" flex flex-col items-center justify-center 0 text-white min-h-screen">
-      <span data-aos="fade-up" className="underline underline-offset-8 decoration-red-600">
-            <h2 data-aos="fade-right" className="text-4xl font-bold text-white mb-12">Projetos</h2>
-          </span>
-
-
-          
-      <div className="  relative flex items-center gap-4 overflow-hidden w-[65%]">
-        <button 
-          className="text-2xl text-white hover:opacity-75 transitio duration-700 hover:bg-white/5 rounded-full p-4 hover:scale-105 hover active:scale-125 active:bg-white/20" 
-          onClick={prevSlide}
+      <section data-aos='' id="projetos" className="flex flex-col items-center justify-center text-white min-h-screen">
+        <motion.span
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="underline underline-offset-8 decoration-red-600"
         >
-          &lt;
-        </button>
-        
-        <div className="flex flex-col md:flex-row  gap-6 items-center p-6 rounded-lg shadow-lg ">
-          <div className=" h-80 mr-6  flex items-center justify-center text-gray-400 rounded-md">
-            <img className="h-full rounded-lg w-full" src={projetoimg} alt="" />
-          </div>
-          <div className="flex flex-col gap-4">
-            <h3 className="text-2xl font-bold">{projects[currentIndex].title}</h3>
-            <p className="text-gray-300 w-[550px]"> {projects[currentIndex].description}</p>
-            <div className="flex gap-2">
-              {projects[currentIndex].tags.map((tag) => (
-                <span 
-                  className="bg-red-500 bg-opacity-40  text-xs px-2 py-1 rounded-md text-red-300" 
-                  key={tag}
+          <motion.h2
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-4xl font-bold mb-12"
+          >
+            Projetos
+          </motion.h2>
+        </motion.span>
+
+        <div className="relative flex items-center gap-4 overflow-hidden w-[65%]">
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="text-2xl text-white hover:opacity-75 transition duration-700 hover:bg-white/5 rounded-full p-4"
+            onClick={prevSlide}
+          >
+            &lt;
+          </motion.button>
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.5 }}
+              className="flex flex-col md:flex-row gap-6 items-center p-6 rounded-lg shadow-lg"
+            >
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="h-80 mr-6 flex items-center justify-center text-gray-400 rounded-md overflow-hidden"
+              >
+                <img
+                  src={projetoimg || "/placeholder.svg"}
+                  alt="Project image"
+                  className="h-full w-full object-cover rounded-lg"
+                />
+              </motion.div>
+              <div className="flex flex-col gap-4">
+                <motion.h3
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="text-2xl font-bold"
                 >
-                  {tag}
-                </span>
-              ))}
-            </div>
-            <div className="flex gap-4">
-              <a 
-                href={projects[currentIndex].codeLink} 
-                className="hover:bg-white/5 hover:text-red-500 text-white px-4 py-2 rounded-md transition duration-500 hover:scale-105"
-              >
-                <div className="flex justify-center items-center gap-2"> <img className="h-5" src={Foto} alt="Logo git hub" />  Github</div>
-               
-              </a>
-              <a 
-                href={projects[currentIndex].demoLink} 
-                className="flex items-center bg-red-700 text-white px-4 py-2 rounded-md hover:opacity-75 transition duration-500 hover:scale-105"
-              >
-                Web site
-              </a>
-            </div>
-          </div>
+                  {projects[currentIndex].title}
+                </motion.h3>
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="text-gray-300 w-[550px]"
+                >
+                  {projects[currentIndex].description}
+                </motion.p>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="flex gap-2"
+                >
+                  {projects[currentIndex].tags.map((tag) => (
+                    <span key={tag} className="bg-red-500 bg-opacity-40 text-xs px-2 py-1 rounded-md text-red-300">
+                      {tag}
+                    </span>
+                  ))}
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                  className="flex gap-4"
+                >
+                  <motion.a
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    href={projects[currentIndex].codeLink}
+                    className="hover:bg-white/5 hover:text-red-500 text-white px-4 py-2 rounded-md transition duration-500"
+                  >
+                    <div className="flex justify-center items-center gap-2">
+                      <img src={Foto || "/placeholder.svg"} alt="Logo git hub" className="h-5 w-5" />
+                      Github
+                    </div>
+                  </motion.a>
+                  <motion.a
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    href={projects[currentIndex].demoLink}
+                    className="flex items-center bg-red-700 text-white px-4 py-2 rounded-md hover:opacity-75 transition duration-500"
+                  >
+                    Web site
+                  </motion.a>
+                </motion.div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="text-2xl text-white hover:opacity-75 transition duration-700 hover:bg-white/5 rounded-full p-4"
+            onClick={nextSlide}
+          >
+            &gt;
+          </motion.button>
         </div>
-        <button 
-          className="text-2xl text-white hover:opacity-75 transitio duration-700 hover:bg-white/5 rounded-full p-4 hover:scale-105 hover active:scale-125 active:bg-white/20" 
-          onClick={nextSlide}
-        >
-          &gt;
-        </button>
-      </div>
-      <div className="flex gap-2 mt-4">
-        {projects.map((_, index) => (
-          <span
-            key={index}
-            className={`w-3 h-3 rounded-full cursor-pointer transition ${
-              currentIndex === index ? "bg-red-500" : "bg-gray-700"
-            }`}
-            onClick={() => setCurrentIndex(index)}
-          ></span>
-        ))}
-      </div>
-    </section>
-
-
-
-
-
-
-
-
-
-
+        <div className="flex gap-2 mt-4">
+          {projects.map((_, index) => (
+            <motion.span
+              key={index}
+              className={`w-3 h-3 rounded-full cursor-pointer transition ${
+                currentIndex === index ? "bg-red-500" : "bg-gray-700"
+              }`}
+              onClick={() => setCurrentIndex(index)}
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.8 }}
+            ></motion.span>
+          ))}
+        </div>
+      </section>
     </div>
   )
 }
+

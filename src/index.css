@@ -5,6 +5,8 @@
 
 
 
+
+
 :root {
   --background: hsl(240deg, 5.88%, 10%);
   --text: 0 0 0;
@@ -29,4 +31,6 @@ body{
 html {
   scroll-behavior: smooth;
 }
+
+
 
