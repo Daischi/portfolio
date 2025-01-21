@@ -145,11 +145,14 @@ export default function Home() {
   useEffect(() => {
     AOS.init({ duration: 1000 })
   }, [])
+
   const [text, setText] = useState("P");
 
   const handleClick = () => {
-    setText((prev) => (prev === "P" ? "Poppi" : "P"));
+    setText(text === "P" ? "Poppi" : "P");
   };
+
+
   return (
     <div className="w-full">
       {/* Header */}
@@ -165,24 +168,24 @@ export default function Home() {
         <span className="hover:text-red-800 focus:text-red-800 transition-colors duration-500 ease-in-out cursor-pointer">
           <a href="#inicio" className="relative inline-block">
             &lt;/ 
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={text}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 5 }}
-                exit={{ opacity: 0, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-red-500 transition-all duration-300 hover:text-white"
-              >
-                {text}
-              </motion.span>
-            </AnimatePresence>
+            <motion.span
+              key={text}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 2 }} 
+              exit={{ opacity: 0, scale: 1.05 }} 
+              transition={{
+                duration: 0.3,
+                ease: "easeIn", 
+              }}
+              className="text-red-500 transition-all duration-300 hover:text-white"
+            >
+              {text}
+            </motion.span>
             &gt;
           </a>
         </span>
       </h1>
     </motion.button>
-
 
           <div className="flex items-center gap-6">
             <nav className="flex space-x-6 text-lg">
