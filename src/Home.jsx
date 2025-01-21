@@ -5,23 +5,31 @@ import AOS from "aos"
 import "aos/dist/aos.css"
 import Foto from "./assets/github.png"
 import projetoimg from "./assets/projeto.png"
+import tradutor from "./assets/tradutor.png"
 
 const projects = [
   {
     title: "Cadastro de Usuarios",
     description:
       "Sistema de cadastro de usuários com front-end em React e back-end em Node.js. Permite cadastrar e validar Nome, idade e E-mail, garantindo consistência dos dados.",
-    tags: ["Next.js", "TypeScript", "TailwindCSS"],
-    codeLink: "#",
-    demoLink: "#",
+    tags: ["React", "JavaScript", "TailwindCSS"],
+    codeLink: "https://github.com/Daischi/Cadastro-de-Usuario",
+    demoLink: "https://registro-usuarios-p420i6z56-guilherme-poppi-limas-projects.vercel.app/",
   },
   {
-    title: "E-commerce Platform",
-    description: "A full-stack e-commerce solution with real-time updates and payment integration.",
-    tags: ["Next.js", "TypeScript", "TailwindCSS"],
-    codeLink: "#",
-    demoLink: "#",
+    title: "Tradutor de Linguas",
+    description: "Tradutor de Línguas, uma aplicação de tradução simples e elegante desenvolvida em React. Este projeto permite aos usuários traduzir textos entre várias línguas de forma fácil e intuitiva.",
+    tags: ["React", "JavaScript", "TailwindCSS"],
+    codeLink: "https://github.com/Daischi/Tradutor",
+    demoLink: "https://tradutor-cxwozngvm-guilherme-poppi-limas-projects.vercel.app/",
   },
+{
+    title: "Poppi Books",
+    description: "Poppi Book o projeto de um site de livros feito para treinar e demonstrar responsividade para todos os tipos de tela. Navegue, descubra e desfrute de uma experiência de leitura perfeita em qualquer dispositivo!",
+    tags: ["HTML", "JavaScript", "CSS"],
+    codeLink: "https://github.com/Daischi/Poppi__Books",
+    demoLink: "https://daischi.github.io/Poppi__Books/",
+  }
 ]
 
 // Skill categories data
@@ -404,6 +412,7 @@ export default function Home() {
                   className="flex gap-4"
                 >
                   <motion.a
+                    target="_blank" 
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     href={projects[currentIndex].codeLink}
@@ -419,6 +428,7 @@ export default function Home() {
                     whileTap={{ scale: 0.95 }}
                     href={projects[currentIndex].demoLink}
                     className="flex items-center bg-red-700 text-white px-4 py-2 rounded-md hover:opacity-75 transition duration-300 hover:text-[#222222]"
+                    target="_blank"
                   >
                     Web site
                   </motion.a>
