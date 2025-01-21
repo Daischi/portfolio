@@ -268,13 +268,13 @@ export default function Home() {
         <div className="w-full max-w-4xl p-6 rounded-lg text-white">
           <div className="text-center mb-6">
             <span data-aos="fade-right" className="underline underline-offset-8 decoration-red-600">
-              <h2 className="text-3xl font-bold mb-12">Sobre mim</h2>
+              <h2 className="text-3xl font-bold mb-12 dark:text-white text-black">Sobre mim</h2>
             </span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div data-aos="fade-right" className="flex items-center justify-center">
-              <p className="text-base leading-relaxed text-zinc-400">
+              <p className="text-base leading-relaxed dark:text-zinc-400 text-slate-600">
                 Olá! Meu nome é Guilherme Poppi, tenho 19 anos sou estudante de Ciência da Computação na Cruzeiro do
                 Sul. Tenho paixão por tecnologia e adoro desenvolver projetos, muitos deles estão disponíveis no meu
                 GitHub.
@@ -296,10 +296,10 @@ export default function Home() {
               ].map((item, index) => (
                 <div
                   key={index}
-                  className="p-4 rounded-lg bg-white/5 backdrop-blur-sm hover:scale-105 transition-transform duration-200"
+                  className="dark:border-0  border border-solid p-4 rounded-lg bg-white/5 backdrop-blur-sm hover:scale-105 transition-transform duration-200"
                 >
                   <h3 className="text-red-600 font-bold text-3xl text-center">{item.number}</h3>
-                  <p className="text-center text-sm text-zinc-400">{item.text}</p>
+                  <p className="text-center text-sm dark:text-zinc-400 text-slate-500 ">{item.text}</p>
                 </div>
               ))}
             </div>
@@ -309,15 +309,15 @@ export default function Home() {
 
       {/* Skills Section */}
 
-      <section id="habilidades" className="mb-56 mt-20 py-20 px-4 md:px-8 overflow-hidden">
+      <section id="habilidades" className=" mb-56 mt-20 py-20 px-4 md:px-8 overflow-hidden">
         <div data-aos="fade-up " className="max-w-6xl mx-auto">
           <span data-aos="fade-up" className="underline underline-offset-8 decoration-red-600">
-            <h2 data-aos="fade-right" className="text-4xl font-bold text-white mb-12">
+            <h2 data-aos="fade-right" className="dark:text-white text-4xl font-bold text-black mb-12">
               Habilidades
             </h2>
           </span>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
             {skillCategories.map((category, index) => (
               <motion.div
                 key={category.title}
@@ -325,18 +325,18 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 whileHover={{ scale: 1.06 }} // Adiciona o efeito de escala ao passar o mouse
                 transition={{ duration: 0.8, type: "spring" }} // Controla a duração e o tipo de animação
-                className="bg-[#242424] p-6 rounded-lg"
+                className="dark:bg-[#242424] p-6 rounded-lg dark:border-0  border border-solid"
               >
-                <h3 className="text-2xl font-semibold text-white mb-6">{category.title}</h3>
+                <h3 className="text-2xl font-semibold dark:text-white text-black mb-6">{category.title}</h3>
                 <div className="space-y-4">
                   {category.skills.map((skill, skillIndex) => (
                     <div key={skill.name} className="space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-300">{skill.name}</span>
-                        <span className="text-gray-400">{skill.level}%</span>
+                        <span className="dark:text-gray-300 text-slate-600">{skill.name}</span>
+                        <span className="dark:text-gray-400 text-black">{skill.level}%</span>
                       </div>
                       <motion.div
-                        className="h-2 bg-[#333333] rounded-full overflow-hidden"
+                        className="h-2 dark:bg-[#333333] bg-gray-200 rounded-full overflow-hidden"
                         initial={{ width: 0 }}
                         whileInView={{ width: "100%" }}
                         viewport={{ once: false }}
@@ -376,7 +376,7 @@ export default function Home() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-4xl font-bold mb-12 "
+            className="text-4xl font-bold mb-12 dark:text-white text-black"
           >
             Projetos
           </motion.h2>
@@ -417,7 +417,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  className="text-2xl font-bold"
+                  className="dark:text-white text-slate-900 font-semibold text-2xl dark:font-bold"
                 >
                   {projects[currentIndex].title}
                 </motion.h3>
@@ -425,7 +425,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
-                  className="text-zinc-400 w-[550px] "
+                  className="dark:text-zinc-400 text-slate-600 w-[550px] "
                 >
                   {projects[currentIndex].description}
                 </motion.p>
@@ -452,7 +452,7 @@ export default function Home() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     href={projects[currentIndex].codeLink}
-                    className="hover:bg-white/5 hover:text-red-500 text-white px-4 py-2 rounded-md transition duration-500"
+                    className="hover:bg-white/5 hover:text-red-500 text-white px-4 py-2 rounded-md transition duration-500 "
                   >
                     <div className="flex justify-center items-center gap-2">
                       <img src={Foto || "/placeholder.svg"} alt="Logo git hub" className="h-5 w-5" />
