@@ -6,6 +6,7 @@ import "aos/dist/aos.css"
 import Foto from "./assets/github.png"
 import projetoimg from "./assets/projeto.png"
 import tradutor from "./assets/tradutor.png"
+import poppibooks from "./assets/poppibooks.png"
 
 const projects = [
   {
@@ -15,6 +16,7 @@ const projects = [
     tags: ["React", "JavaScript", "TailwindCSS"],
     codeLink: "https://github.com/Daischi/Cadastro-de-Usuario",
     demoLink: "https://registro-usuarios-p420i6z56-guilherme-poppi-limas-projects.vercel.app/",
+    image: projetoimg,
   },
   {
     title: "Tradutor de Linguas",
@@ -22,13 +24,15 @@ const projects = [
     tags: ["React", "JavaScript", "TailwindCSS"],
     codeLink: "https://github.com/Daischi/Tradutor",
     demoLink: "https://tradutor-cxwozngvm-guilherme-poppi-limas-projects.vercel.app/",
+    image: tradutor,
   },
 {
     title: "Poppi Books",
-    description: "Poppi Book o projeto de um site de livros feito para treinar e demonstrar responsividade para todos os tipos de tela. Navegue, descubra e desfrute de uma experiência de leitura perfeita em qualquer dispositivo!",
+    description: "Poppi Book é um site de venda de livros, oferecendo uma plataforma prática e agradável para explorar e adquirir títulos diversos, com uma navegação fluida em qualquer dispositivo.",
     tags: ["HTML", "JavaScript", "CSS"],
     codeLink: "https://github.com/Daischi/Poppi__Books",
     demoLink: "https://daischi.github.io/Poppi__Books/",
+    image: poppibooks,
   }
 ]
 
@@ -143,7 +147,7 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="w-full">
+    <div  className="w-full">
       {/* Header */}
       <header className="fixed top-0 left-0 w-full bg-opacity-70 dark:bg-opacity-70 backdrop-blur-sm bg-white dark:bg-zinc-900 shadow-md z-50">
         <div className="flex justify-between items-center max-w-7xl mx-auto px-4 py-5">
@@ -371,9 +375,10 @@ export default function Home() {
                 className="h-80 mr-6 flex items-center justify-center text-gray-400 rounded-md overflow-hidden"
               >
                 <img
-                  src={projetoimg || "/placeholder.svg"}
+                  src={projects[currentIndex].image || "/placeholder.svg"}
                   alt="Project image"
-                  className="h-full w-full object-cover rounded-lg"
+                  className="h-full w-full object-cover rounded-lg hover:border-4 border-solid border-white/5 hover:shadow-2xl transition duration-500 ease-in-out "
+
                 />
               </motion.div>
               <div className="flex flex-col gap-4">
@@ -389,7 +394,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
-                  className="text-gray-300 w-[550px]"
+                  className="text-zinc-400 w-[550px] "
                 >
                   {projects[currentIndex].description}
                 </motion.p>
@@ -397,7 +402,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
-                  className="flex gap-2"
+                  className="flex gap-2 "
                 >
                   {projects[currentIndex].tags.map((tag) => (
                     <span key={tag} className="bg-red-500 hover: bg-opacity-40 text-xs px-2 py-1 rounded-md text-red-300 hover:scale-105 cursor-pointer transition-all duration-300 hover:text-red-500">
