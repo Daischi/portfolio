@@ -357,14 +357,14 @@ export default function Home() {
           
       <div className="  relative flex items-center gap-4 overflow-hidden w-[65%]">
         <button 
-          className="bg-white/5 text-2xl text-white hover:opacity-75 transition" 
+          className="text-2xl text-white hover:opacity-75 transitio duration-700 hover:bg-white/5 rounded-full p-4 hover:scale-105 hover active:scale-125 active:bg-white/20" 
           onClick={prevSlide}
         >
           &lt;
         </button>
         
         <div className="flex flex-col md:flex-row  gap-6 items-center p-6 rounded-lg shadow-lg ">
-          <div className="w-[520px] h-80 mr-6  flex items-center justify-center text-gray-400 rounded-md">
+          <div className=" h-80 mr-6  flex items-center justify-center text-gray-400 rounded-md">
             <img className="h-full rounded-lg w-full" src={projetoimg} alt="" />
           </div>
           <div className="flex flex-col gap-4">
@@ -390,7 +390,7 @@ export default function Home() {
               </a>
               <a 
                 href={projects[currentIndex].demoLink} 
-                className="flex items-center bg-red-500 text-white px-4 py-2 rounded-md hover:opacity-75 transition duration-500 hover:scale-105"
+                className="flex items-center bg-red-700 text-white px-4 py-2 rounded-md hover:opacity-75 transition duration-500 hover:scale-105"
               >
                 Web site
               </a>
@@ -398,7 +398,7 @@ export default function Home() {
           </div>
         </div>
         <button 
-          className="text-2xl text-white hover:opacity-75 transition " 
+          className="text-2xl text-white hover:opacity-75 transitio duration-700 hover:bg-white/5 rounded-full p-4 hover:scale-105 hover active:scale-125 active:bg-white/20" 
           onClick={nextSlide}
         >
           &gt;
