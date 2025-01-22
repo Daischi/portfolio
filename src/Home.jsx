@@ -7,6 +7,8 @@ import Foto from "./assets/github.png"
 import projetoimg from "./assets/projeto.png"
 import tradutor from "./assets/tradutor.png"
 import poppibooks from "./assets/poppibooks.png"
+import Contact from './components/contacts'
+
 
 const projects = [
   {
@@ -83,7 +85,7 @@ function SocialIcons() {
     {
       name: "WhatsApp",
       icon: Phone,
-      href: "tel:+551191305-2002",
+      href: "https://wa.me/qr/PJAR6OILE4FKG1",
       color: "hover:text-[#A12F2F]",
     },
   ]
@@ -495,6 +497,9 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      < Contact id="contatos" />
+
     </div>
   )
 }
