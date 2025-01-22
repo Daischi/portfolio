@@ -1,8 +1,9 @@
 "use client"
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Send, Mail, MapPin, Phone, Github, Linkedin, Instagram, Check, AlertCircle } from "lucide-react"
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Send, Mail, MapPin, Phone, Github, Linkedin, Instagram, Check, AlertCircle } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -10,41 +11,59 @@ export function Contact() {
     email: "",
     subject: "",
     message: "",
-  })
+  });
 
   const [formState, setFormState] = useState({
     isSubmitting: false,
     isSubmitted: false,
     error: null,
-  })
+  });
 
-  const [focusedInput, setFocusedInput] = useState(null)
+  const [focusedInput, setFocusedInput] = useState(null);
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setFormState({ isSubmitting: true, isSubmitted: false, error: null })
+    e.preventDefault();
+    setFormState({ isSubmitting: true, isSubmitted: false, error: null });
 
     try {
-      // Simulate form submission
-      await new Promise((resolve) => setTimeout(resolve, 2000))
-      setFormState({ isSubmitting: false, isSubmitted: true, error: null })
-      setFormData({ name: "", email: "", subject: "", message: "" })
+      // Enviar email usando EmailJS
+      const templateParams = {
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      };
+
+      await emailjs.send(
+        "YOUR_SERVICE_ID", // Substitua pelo seu Service ID
+        "YOUR_TEMPLATE_ID", // Substitua pelo seu Template ID
+        templateParams,
+        "YOUR_PUBLIC_KEY" // Substitua pela sua Public Key
+      );
+
+      setFormState({ isSubmitting: false, isSubmitted: true, error: null });
+      setFormData({ name: "", email: "", subject: "", message: "" });
 
       // Reset success message after 5 seconds
       setTimeout(() => {
-        setFormState((prev) => ({ ...prev, isSubmitted: false }))
-      }, 5000)
-    } catch (error) {
-      setFormState({ isSubmitting: false, isSubmitted: false, error: "Something went wrong. Please try again." })
+        setFormState((prev) => ({ ...prev, isSubmitted: false }));
+      }, 5000);
+    } 
+    catch (error) {
+      setFormState({
+        isSubmitting: false,
+        isSubmitted: false,
+        error: "Algo deu errado. Tente novamente mais tarde.",
+      });
     }
-  }
+  };
 
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
-    }))
-  }
+    }));
+  };
 
   const contactInfo = [
     {
@@ -52,23 +71,20 @@ export function Contact() {
       label: "Mensagens",
       value: "+55 (11) 91305-2002",
       href: "tel:+5511999999999",
-      
     },
     {
       icon: Mail,
       label: "Email",
       value: "guilhermepoppilm@gmail.com",
       href: "mailto:guilhermepoppilm@gmail.com",
-      
     },
     {
       icon: MapPin,
-      label: "Lacalização",
+      label: "Localização",
       value: "São Paulo, SP - Brazil",
       href: null,
-      color: "",
     },
-  ]
+  ];
 
   const socialLinks = [
     {
@@ -89,8 +105,7 @@ export function Contact() {
       label: "Instagram",
       color: "hover:bg-[#E4405F]/10 hover:text-[#E4405F]",
     },
-  ]
-
+  ];
   return (
     <section id="contatos" className="relative py-20 overflow-hidden">
       {/* Background Elements */}
