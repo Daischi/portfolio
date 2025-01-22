@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import projetoimg from "../assets/projeto.png"; 
 import Foto from '../assets/github.png'
 import tradutor from "../assets/tradutor.png";
 import poppibooks from "../assets/poppibooks.png";
+import AOS from "aos";
+import "aos/dist/aos.css";  
 
 const projects = [
   {
@@ -35,6 +37,7 @@ const projects = [
   },
 ];
 
+
 function ProjectCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -45,7 +48,14 @@ function ProjectCarousel() {
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex === projects.length - 1 ? 0 : prevIndex + 1));
   };
-
+    useEffect(() => {
+    AOS.init({
+          duration: 1000,  // Duração da animação
+          once: false,      // Anima apenas uma vez, quando o elemento aparecer na tela
+          offset: 300,     // Distância do topo para a animação começar (opcional)
+        });
+  }, []);
+  
   return (
     <section data-aos="zoom-in" id="projetos" className="flex flex-col items-center justify-center text-white min-h-screen">
     <motion.span
