@@ -76,6 +76,17 @@ function ProjectCarousel() {
   }, [])
 
   const PreviewModal = ({ isOpen, onClose, project }) => {
+    useEffect(() => {
+      if (isOpen) {
+        document.body.style.overflow = "hidden"
+      } else {
+        document.body.style.overflow = "unset"
+      }
+      return () => {
+        document.body.style.overflow = "unset"
+      }
+    }, [isOpen])
+
     if (!isOpen) return null
 
     return (
@@ -84,21 +95,31 @@ function ProjectCarousel() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
+          transition={{ duration: 0.3 }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
           onClick={onClose}
         >
           <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            className="relative w-[95%] max-w-7x h-[80vh] bg-white dark:bg-zinc-900 rounded-lg p-8"
+            initial={{ scale: 0.8, y: 20, opacity: 0 }}
+            animate={{ scale: 1, y: 0, opacity: 1 }}
+            exit={{ scale: 0.8, y: 20, opacity: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 300,
+              damping: 25,
+              duration: 0.4,
+            }}
+            className="relative w-[70%] max-w-5x h-[60%] bg-white dark:bg-zinc-900/95 rounded-lg p-8 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <button
+            <motion.button
+              whileHover={{ scale: 1.1, rotate: 90 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
               onClick={onClose}
-              className="absolute right-4 top-4 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 group"
+              className="absolute right-4 top-4 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
             >
-              <div className=" hover:bg-opacity-55 hover:bg-zinc-700 rounded-full p-4 transition-all duration-500 relative">
+              <div className="hover:bg-opacity-55 hover:bg-zinc-700 rounded-full p-4 transition-all duration-500">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
@@ -108,52 +129,98 @@ function ProjectCarousel() {
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
-                
               </div>
-            </button>
+            </motion.button>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 h-full">
-              <div className="h-full">
+              <motion.div
+                initial={{ x: -20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="h-full"
+              >
                 <img
                   src={project.image || "/placeholder.svg"}
                   alt={`Preview of ${project.title}`}
-                  className="w-full h-full object-cover rounded-lg"
+                  className="w-full h-full object-cover rounded-lg shadow-xl hover:scale-[1.02] transition-transform duration-300"
                 />
-              </div>
-              <div className="flex flex-col justify-between h-full overflow-y-auto">
+              </motion.div>
+              <motion.div
+                initial={{ x: 20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="flex flex-col justify-between h-full overflow-y-auto"
+              >
                 <div>
-                  <h3 className="text-2xl font-bold dark:text-white mb-4">{project.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-6">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tags.map((tag) => (
-                      <span
+                  <motion.h3
+                    initial={{ y: -10, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.4 }}
+                    className="text-3xl font-bold dark:text-white mb-4 bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent"
+                  >
+                    {project.title}
+                  </motion.h3>
+                  <motion.p
+                    initial={{ y: 10, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                    className="text-gray-600 dark:text-gray-300 mb-6 text-lg leading-relaxed"
+                  >
+                    {project.title === "Cadastro de Usuarios"
+                      ? "Um sistema robusto e intuitivo para gerenciamento de usuários, desenvolvido com React e Node.js. Este projeto demonstra boas práticas de desenvolvimento web, incluindo validação de dados em tempo real, interface responsiva e integração backend-frontend segura."
+                      : project.title === "Tradutor de Linguas"
+                        ? "Uma ferramenta de tradução moderna e eficiente que suporta múltiplos idiomas. Desenvolvida com React e APIs de tradução state-of-the-art, oferece tradução instantânea com uma interface limpa e amigável, perfeita para uso diário."
+                        : "Uma plataforma de e-commerce especializada em livros, construída com foco na experiência do usuário. Apresenta um design responsivo, sistema de busca eficiente e interface intuitiva para navegação e compra de livros."}
+                  </motion.p>
+                  <motion.div
+                    initial={{ y: 10, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.6 }}
+                    className="flex flex-wrap gap-2 mb-6"
+                  >
+                    {project.tags.map((tag, index) => (
+                      <motion.span
                         key={tag}
-                        className="dark:bg-red-600 bg-red-200 text-red-500 dark:bg-opacity-40 text-xs px-2 py-1 rounded-2xl dark:text-red-300"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ delay: 0.7 + index * 0.1 }}
+                        whileHover={{ scale: 1.1 }}
+                        className="dark:bg-red-600/20 bg-red-100 text-red-500 text-sm px-3 py-1.5 rounded-full dark:text-red-300 font-medium"
                       >
                         {tag}
-                      </span>
+                      </motion.span>
                     ))}
-                  </div>
+                  </motion.div>
                 </div>
-                <div className="flex gap-4">
-                  <a
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.8 }}
+                  className="flex gap-4"
+                >
+                  <motion.a
+                    whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)" }}
+                    whileTap={{ scale: 0.95 }}
                     href={project.codeLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 flex justify-center items-center gap-2 dark:hover:bg-white/5 hover:text-red-500 dark:text-white dark:bg-transparent bg-slate-950 px-4 py-2 rounded-md transition duration-200"
+                    className="flex-1 flex justify-center items-center gap-2 dark:hover:bg-white/5 hover:text-red-500 dark:text-white dark:bg-transparent bg-slate-950 px-6 py-3 rounded-lg transition duration-200 font-medium"
                   >
                     <img src={Foto || "/placeholder.svg"} alt="GitHub logo" className="h-5 w-5" />
-                    Github
-                  </a>
-                  <a
+                    Explorar Código
+                  </motion.a>
+                  <motion.a
+                    whileHover={{ scale: 1.05, brightness: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
                     href={project.demoLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 flex justify-center items-center bg-red-700 text-white px-4 py-2 rounded-md dark:hover:opacity-80 transition duration-300 dark:hover:text-black"
+                    className="flex-1 flex justify-center items-center bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-3 rounded-lg font-medium shadow-lg shadow-red-500/20 hover:shadow-red-500/30 transition duration-300"
                   >
-                    Web site
-                  </a>
-                </div>
-              </div>
+                    Visualizar Projeto
+                  </motion.a>
+                </motion.div>
+              </motion.div>
             </div>
           </motion.div>
         </motion.div>
@@ -162,17 +229,12 @@ function ProjectCarousel() {
   }
 
   return (
-    <section
-      
-      id="projetos"
-      className="flex flex-col items-center justify-center text-white min-h-screen"
-    >
+    <section id="projetos" className="flex flex-col items-center justify-center text-white min-h-screen">
       <motion.span
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="underline underline-offset-8 decoration-red-600"
-        
       >
         <motion.h2
           initial={{ opacity: 0, x: -20 }}
@@ -181,7 +243,7 @@ function ProjectCarousel() {
           className="text-4xl font-bold mb-12 dark:text-white text-black"
           data-aos="fade-right"
         >
-        <p data-aos="fade-right"> Projetos </p>  
+          <p data-aos="fade-right"> Projetos </p>
         </motion.h2>
       </motion.span>
 
