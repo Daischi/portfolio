@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, Mail, MapPin, Phone, Github, Linkedin, Instagram, Check, AlertCircle } from "lucide-react";
+import { Send, Mail, MapPin, Phone, Github, Linkedin, Instagram, Check, AlertCircle,} from "lucide-react";
 import emailjs from "@emailjs/browser";
 
 export function Contact() {
@@ -100,7 +100,7 @@ export function Contact() {
       color: "hover:bg-[#0077B5]/10 hover:text-[#0077B5]",
     },
     {
-      icon: Instagram,
+      icon: Mail,
       href: "https://instagram.com",
       label: "Instagram",
       color: "hover:bg-[#E4405F]/10 hover:text-[#E4405F]",
