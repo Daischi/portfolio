@@ -182,7 +182,7 @@ export function Contact() {
                             initial={{ opacity: 0, y: -10 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -10 }}
-                            className="fixed top-10 left-1/2 transform -translate-x-1/2 px-6 py-3 bg-red-600 text-white rounded-lg shadow-lg z-50"
+                            className="fixed top-10 left-1/2 transform -translate-x-1/2 px-6 py-3 bg-red-600 text-white rounded-lg shadow-lg z-50 "
                           >
                            {copiedText} (Mensagem Copiada)
                           </motion.div>
