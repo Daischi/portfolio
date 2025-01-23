@@ -2,11 +2,10 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, Mail, MapPin, Phone, Github, Linkedin, Check, AlertCircle,} from "lucide-react";
+import { Send, Mail, MapPin, Phone, Github, Linkedin, Check, AlertCircle, } from "lucide-react";
 import emailjs from "@emailjs/browser";
-import AOS from "aos";
 import "aos/dist/aos.css";
- 
+
 
 
 
@@ -19,7 +18,7 @@ export function Contact() {
     subject: "",
     message: "",
   });
-  
+
 
   const [formState, setFormState] = useState({
     isSubmitting: false,
@@ -56,7 +55,7 @@ export function Contact() {
       setTimeout(() => {
         setFormState((prev) => ({ ...prev, isSubmitted: false }));
       }, 5000);
-    } 
+    }
     catch (error) {
       setFormState({
         isSubmitting: false,
@@ -72,19 +71,28 @@ export function Contact() {
       [e.target.name]: e.target.value,
     }));
   };
+  const [copiedText, setCopiedText] = useState(null);
+  const handleCopy = (text) => {
+    navigator.clipboard.writeText(text);
+    setCopiedText(text);
 
+    // Ocultar mensagem após 3 segundos
+    setTimeout(() => {
+      setCopiedText(null);
+    }, 3000);
+  };
   const contactInfo = [
     {
       icon: Phone,
       label: "Mensagens",
       value: "+55 (11) 91305-2002",
-      href: "tel:+5511999999999",
+
     },
     {
       icon: Mail,
       label: "Email",
       value: "guilhermepoppilm@gmail.com",
-      href: "mailto:guilhermepoppilm@gmail.com",
+
     },
     {
       icon: MapPin,
@@ -109,12 +117,12 @@ export function Contact() {
     },
     {
       icon: Mail,
-      href: "https://instagram.com",
+      href: "mailto:guilhermepoppilm@gmail.com",
       label: "Instagram",
       color: "hover:bg-[#E4405F]/10 hover:text-[#E4405F]",
     },
   ];
-  
+
   return (
     <section id="contatos" className="relative py-20 overflow-hidden h-full mt-36">
       {/* Background Elements */}
@@ -134,11 +142,11 @@ export function Contact() {
         >
           <div className="text-center mb-16">
             <motion.div
-              
+
               className="inline-block p-4 rounded-2xl mb-8 underline underline-offset-8 decoration-red-600"
             >
               <h2 data-aos="fade-right" className="text-4xl font-bold dark:text-white text-black ">
-              Vamos começar?
+                Vamos começar?
               </h2>
             </motion.div>
             <p data-aos="fade-up" className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
@@ -165,12 +173,26 @@ export function Contact() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: false }}
                       transition={{ duration: 0.6, delay: index * 0.2, ease: "easeInOut" }}
+                      onClick={() => handleCopy(item.value)}
 
                     >
+                      <AnimatePresence>
+                        {copiedText && (
+                          <motion.div
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            className="fixed top-10 left-1/2 transform -translate-x-1/2 px-6 py-3 bg-red-600 text-white rounded-lg shadow-lg z-50"
+                          >
+                           {copiedText} (Mensagem Copiada)
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                       <div className="flex items-center gap-6 group">
                         <div
                           className={`relative p-4 rounded-xl bg-gradient-to-br ${item.color} transform transition-transform group-hover:scale-110`}
                         >
+
                           <item.icon className="w-6 h-6 text-white" />
                         </div>
                         <div>
@@ -223,9 +245,9 @@ export function Contact() {
               viewport={{ once: false, amount: 0.3 }} // Ativa a animação quando 30% do elemento estiver visível
               transition={{ duration: 0.5 }}
               className="lg:col-span-7"
-              
+
             >
-              <div  className="relative p-8 rounded-2xl overflow-hidden">
+              <div className="relative p-8 rounded-2xl overflow-hidden">
                 <div className="absolute inset-0 bg-slate-100 dark:bg-zinc-900/70 backdrop-blur-md" />
                 <form onSubmit={handleSubmit} className="relative space-y-6 ">
                   <div className="grid md:grid-cols-2 gap-6 ">
@@ -268,7 +290,7 @@ export function Contact() {
 
                   <div className="relative">
                     <label htmlFor="subject" className="block text-sm font-medium text-zinc-900 dark:text-white mb-2">
-                    Assunto
+                      Assunto
                     </label>
                     <input
                       type="text"
@@ -323,7 +345,7 @@ export function Contact() {
                   </div>
 
                   <motion.button
-                    
+
                     type="submit"
                     disabled={formState.isSubmitting}
                     whileHover={{ scale: 1.02 }}
@@ -353,9 +375,8 @@ export function Contact() {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
-                        className={`p-4 rounded-xl ${
-                          formState.isSubmitted ? "bg-green-500/10 text-green-500" : " text-red-500"
-                        } flex items-center gap-2`}
+                        className={`p-4 rounded-xl ${formState.isSubmitted ? "bg-green-500/10 text-green-500" : " text-red-500"
+                          } flex items-center gap-2`}
                       >
                         {formState.isSubmitted ? (
                           <>
@@ -373,6 +394,7 @@ export function Contact() {
                   </AnimatePresence>
                 </form>
               </div>
+
             </motion.div>
           </div>
         </motion.div>
