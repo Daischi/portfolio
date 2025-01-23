@@ -89,13 +89,13 @@ export function Contact() {
   const socialLinks = [
     {
       icon: Github,
-      href: "https://github.com",
+      href: "https://github.com/Daischi",
       label: "Github",
       color: "hover:bg-[#333]/10 hover:text-[#333] dark:hover:bg-[#fff]/10 dark:hover:text-white",
     },
     {
       icon: Linkedin,
-      href: "https://linkedin.com",
+      href: "https://www.linkedin.com/in/guilherme-poppi-b436b1266/",
       label: "LinkedIn",
       color: "hover:bg-[#0077B5]/10 hover:text-[#0077B5]",
     },
