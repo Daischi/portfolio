@@ -35,6 +35,7 @@ const projects = [
     demoLink: "https://daischi.github.io/Poppi__Books/",
     image: poppibooks,
   },
+  
 ];
 
 
