@@ -79,8 +79,6 @@ function ProjectCarousel() {
     useEffect(() => {
       if (isOpen) {
         document.body.style.overflow = "hidden"
-      } else {
-        document.body.style.overflow = "unset"
       }
       return () => {
         document.body.style.overflow = "unset"
@@ -149,7 +147,7 @@ function ProjectCarousel() {
                 initial={{ x: 20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.3 }}
-                className="flex flex-col justify-between h-full overflow-y-auto"
+                className="flex flex-col justify-between h-full"
               >
                 <div>
                   <motion.h3
