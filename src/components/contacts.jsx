@@ -2,10 +2,15 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, Mail, MapPin, Phone, Github, Linkedin, Instagram, Check, AlertCircle,} from "lucide-react";
+import { Send, Mail, MapPin, Phone, Github, Linkedin, Check, AlertCircle,} from "lucide-react";
 import emailjs from "@emailjs/browser";
 import AOS from "aos";
-import "aos/dist/aos.css";  
+import "aos/dist/aos.css";
+ 
+
+
+
+
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -14,6 +19,7 @@ export function Contact() {
     subject: "",
     message: "",
   });
+  
 
   const [formState, setFormState] = useState({
     isSubmitting: false,
@@ -108,8 +114,9 @@ export function Contact() {
       color: "hover:bg-[#E4405F]/10 hover:text-[#E4405F]",
     },
   ];
+  
   return (
-    <section id="contatos" className="relative py-20 overflow-hidden">
+    <section id="contatos" className="relative py-20 overflow-hidden h-full mt-36">
       {/* Background Elements */}
       <div className="absolute inset-0" />
       <div className="absolute inset-0">
@@ -119,24 +126,22 @@ export function Contact() {
 
       <div className="relative container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.3 }} // Ativa a animação quando 30% do elemento estiver visível
+          transition={{ duration: 0.6, ease: "easeInOut" }}
           className="max-w-7xl mx-auto"
         >
           <div className="text-center mb-16">
             <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              
               className="inline-block p-4 rounded-2xl mb-8 underline underline-offset-8 decoration-red-600"
             >
-              <h2 data-aos="fade-right" className="text-4xl font-bold dark:text-white text-black">
+              <h2 data-aos="fade-right" className="text-4xl font-bold dark:text-white text-black ">
               Vamos começar?
               </h2>
             </motion.div>
-            <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
+            <p data-aos="fade-up" className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
               Tem um projeto em mente? Procurando uma parceria ou trabalho em conjunto? Entre em contato pelo formulário abaixo.
             </p>
           </div>
@@ -144,9 +149,10 @@ export function Contact() {
           <div className="grid lg:grid-cols-12 gap-12">
             {/* Contact Info */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.3 }} // Ativa a animação quando 30% do elemento estiver visível
+              transition={{ duration: 0.6, ease: "easeInOut" }}
               className="lg:col-span-5 space-y-8"
             >
               <div className="relative p-8 rounded-2xl overflow-hidden">
@@ -155,11 +161,11 @@ export function Contact() {
                   {contactInfo.map((item, index) => (
                     <motion.div
                       key={item.label}
-                      initial={{ opacity: 0, x: -20 }}
+                      initial={{ opacity: 0, x: -10 }}
                       whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
-                
+                      viewport={{ once: false }}
+                      transition={{ duration: 0.6, delay: index * 0.2, ease: "easeInOut" }}
+
                     >
                       <div className="flex items-center gap-6 group">
                         <div
@@ -177,7 +183,7 @@ export function Contact() {
                               {item.value}
                             </a>
                           ) : (
-                            <p className="hover:text-red-600 text-lg font-medium text-zinc-900 dark:text-white">{item.value}</p>
+                            <p className="hover:text-red-600 text-lg font-medium text-zinc-900 dark:text-white dark:hover:text-red-600 cursor-pointer duration-300 transition-all">{item.value}</p>
                           )}
                         </div>
                       </div>
@@ -193,12 +199,12 @@ export function Contact() {
                           href={social.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          initial={{ opacity: 0, y: 20 }}
+                          initial={{ opacity: 0, y: 10 }}
                           whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: index * 0.1 }}
+                          viewport={{ once: false, amount: 0.3 }} // Ativa a animação quando 30% do elemento estiver visível
+                          transition={{ duration: 0.6, delay: index * 0.2, ease: "easeInOut" }}
                           whileHover={{ y: -4 }}
-                          className={`p-4 rounded-xl transition-all duration-300 ${social.color}`}
+                          className={`p-4 rounded-xl transition-all duration-500 ${social.color}`}
                         >
                           <social.icon className="w-6 h-6" />
                           <span className="sr-only">{social.label}</span>
@@ -212,12 +218,14 @@ export function Contact() {
 
             {/* Contact Form */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.3 }} // Ativa a animação quando 30% do elemento estiver visível
+              transition={{ duration: 0.5 }}
               className="lg:col-span-7"
+              
             >
-              <div className="relative p-8 rounded-2xl overflow-hidden">
+              <div  className="relative p-8 rounded-2xl overflow-hidden">
                 <div className="absolute inset-0 bg-slate-100 dark:bg-zinc-900/70 backdrop-blur-md" />
                 <form onSubmit={handleSubmit} className="relative space-y-6 ">
                   <div className="grid md:grid-cols-2 gap-6 ">
@@ -315,13 +323,14 @@ export function Contact() {
                   </div>
 
                   <motion.button
+                    
                     type="submit"
                     disabled={formState.isSubmitting}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="relative w-full px-8 py-4 bg-gradient-to-r text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden group bg-red-700"
+                    className="relative w-full px-8 py-4 bg-gradient-to-r text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden group bg-red-700 hover:bg-red-800 transition-all duration-300"
                   >
-                    <span className="absolute inset-0 bg-gradient-to-r  opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <span className="absolute inset-0 bg-gradient-to-r  opacity-0 group-hover:opacity-100 transition-opacity duration-300 " />
                     <span className="relative flex items-center justify-center gap-2 font-semibold ">
                       {formState.isSubmitting ? (
                         <>
