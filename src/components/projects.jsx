@@ -91,7 +91,7 @@ function ProjectCarousel() {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
-            className="relative w-[95%] max-w-7x h-[8 0vh] bg-white dark:bg-zinc-900 rounded-lg p-8"
+            className="relative w-[95%] max-w-7x h-[80vh] bg-white dark:bg-zinc-900 rounded-lg p-8"
             onClick={(e) => e.stopPropagation()}
           >
             <button
