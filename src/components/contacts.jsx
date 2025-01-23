@@ -4,6 +4,8 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, Mail, MapPin, Phone, Github, Linkedin, Instagram, Check, AlertCircle,} from "lucide-react";
 import emailjs from "@emailjs/browser";
+import AOS from "aos";
+import "aos/dist/aos.css";  
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -130,8 +132,8 @@ export function Contact() {
               transition={{ duration: 0.5 }}
               className="inline-block p-4 rounded-2xl mb-8 underline underline-offset-8 decoration-red-600"
             >
-              <h2 className="text-4xl font-bold dark:text-white text-black">
-              Vamos conectar
+              <h2 data-aos="fade-right" className="text-4xl font-bold dark:text-white text-black">
+              Vamos começar?
               </h2>
             </motion.div>
             <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
