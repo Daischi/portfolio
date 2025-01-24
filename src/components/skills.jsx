@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useRef, createContext, useContext } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import AOS from "aos"
-import "aos/dist/aos.css"
+import { useState, useEffect, useRef, createContext, useContext } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const AnimationContext = createContext({
   shouldAnimate: false,
   animationKey: 0,
-})
+});
 
 const skillCategories = [
   {
@@ -47,21 +47,28 @@ const skillCategories = [
       { name: "Windows", level: 90 },
     ],
   },
-]
+];
 
 const SkillCard = ({ skill, index }) => {
-  const { shouldAnimate, animationKey } = useContext(AnimationContext)
-  const [progress, setProgress] = useState(0)
+  const { shouldAnimate, animationKey } = useContext(AnimationContext);
+  const [animatedValue, setAnimatedValue] = useState(0);
 
   useEffect(() => {
     if (shouldAnimate) {
-      setProgress(0)
-      const timer = setTimeout(() => {
-        setProgress(skill.level)
-      }, 100)
-      return () => clearTimeout(timer)
+      setAnimatedValue(0); // Reinicia a animação
+      const interval = setInterval(() => {
+        setAnimatedValue((prev) => {
+          const nextValue = prev + 1;
+          if (nextValue >= skill.level) {
+            clearInterval(interval);
+            return skill.level; // Alcança o valor final
+          }
+          return nextValue;
+        });
+      }, 3); // Velocidade da animação
+      return () => clearInterval(interval);
     }
-  }, [shouldAnimate, skill.level, animationKey])
+  }, [shouldAnimate, skill.level, animationKey]);
 
   return (
     <motion.div
@@ -77,57 +84,62 @@ const SkillCard = ({ skill, index }) => {
           <motion.div
             className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-600"
             initial={{ width: "0%" }}
-            animate={{ width: `${progress}%` }}
-            transition={{ duration: 1, ease: "easeInOut" }}
+            animate={{ width: `${animatedValue}%` }}
+            transition={{ duration: skill.level / 100, ease: "easeInOut" }}
+            style={{ width: `${animatedValue}%` }}
           ></motion.div>
         </div>
         <span className="text-sm font-bold inline-block py-1 px-2 uppercase rounded-full text-red-600 dark:text-zinc-400">
-          {progress}%
+          {animatedValue}%
         </span>
       </div>
     </motion.div>
-  )
-}
+  );
+};
 
 const Skills = () => {
-  const [selectedCategory, setSelectedCategory] = useState(skillCategories[0])
-  const [shouldAnimate, setShouldAnimate] = useState(false)
-  const [animationKey, setAnimationKey] = useState(0)
-  const sectionRef = useRef(null)
+  const [selectedCategory, setSelectedCategory] = useState(skillCategories[0]);
+  const [shouldAnimate, setShouldAnimate] = useState(false);
+  const [animationKey, setAnimationKey] = useState(0);
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     AOS.init({
       duration: 1000,
       once: false,
       offset: 200,
-    })
+    });
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setShouldAnimate(true)
-          setAnimationKey((prev) => prev + 1)
+          setShouldAnimate(true);
+          setAnimationKey((prev) => prev + 1);
         } else {
-          setShouldAnimate(false)
+          setShouldAnimate(false);
         }
       },
-      { threshold: 0.1 },
-    )
+      { threshold: 0.1 }
+    );
 
     if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+      observer.observe(sectionRef.current);
     }
 
     return () => {
       if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
+        observer.unobserve(sectionRef.current);
       }
-    }
-  }, [])
+    };
+  }, []);
 
   return (
     <AnimationContext.Provider value={{ shouldAnimate, animationKey }}>
-      <section ref={sectionRef} id="habilidades" className="mb-56 mt-20 py-20 px-4 md:px-8 overflow-hidden">
+      <section
+        ref={sectionRef}
+        id="habilidades"
+        className="mb-15 mt-20 py-20 px-4 md:px-8 overflow-hidden"
+      >
         <div className="max-w-6xl mx-auto">
           <motion.h2
             data-aos="fade-right"
@@ -137,7 +149,12 @@ const Skills = () => {
             transition={{ duration: 0.5 }}
             className="text-4xl font-bold text-center mb-12 dark:text-white"
           >
-            <span data-aos="fade-right" className="underline underline-offset-8 decoration-red-600">Habilidades</span>
+            <span
+              data-aos="fade-right"
+              className="underline underline-offset-8 decoration-red-600"
+            >
+              Habilidades
+            </span>
           </motion.h2>
 
           <div className="flex flex-wrap justify-center gap-8 mb-12">
@@ -151,7 +168,7 @@ const Skills = () => {
                 className={`cursor-pointer px-4 py-2 rounded-lg transition-colors ${
                   selectedCategory.title === category.title
                     ? "bg-red-600 text-white"
-                    : "bg-gray-200 dark:bg-opacity-10 text-gray-800 dark:text-gray-200"
+                    : "bg-gray-100 dark:bg-opacity-10 text-gray-800 dark:text-gray-200"
                 }`}
               >
                 <h3 className="text-xl font-semibold">{category.title}</h3>
@@ -169,13 +186,21 @@ const Skills = () => {
               className="flex flex-col items-center"
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-6 w-full">
-                {selectedCategory.skills.slice(0, 4 ).map((skill, index) => (
-                  <SkillCard key={`${skill.name}-${animationKey}`} skill={skill} index={index} />
+                {selectedCategory.skills.slice(0, 4).map((skill, index) => (
+                  <SkillCard
+                    key={`${skill.name}-${animationKey}`}
+                    skill={skill}
+                    index={index}
+                  />
                 ))}
               </div>
               <div className="flex flex-col sm:flex-row justify-center gap-6 w-full max-w-3xl">
                 {selectedCategory.skills.slice(4, 7).map((skill, index) => (
-                  <SkillCard key={`${skill.name}-${animationKey}`} skill={skill} index={index + 4} />
+                  <SkillCard
+                    key={`${skill.name}-${animationKey}`}
+                    skill={skill}
+                    index={index + 4}
+                  />
                 ))}
               </div>
             </motion.div>
@@ -183,8 +208,7 @@ const Skills = () => {
         </div>
       </section>
     </AnimationContext.Provider>
-  )
-}
+  );
+};
 
-export default Skills
-
+export default Skills;
