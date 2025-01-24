@@ -31,6 +31,40 @@ export default function Home() {
   }, [isDark]);
 
   useEffect(() => {
+    const typewriterText = "Full Stack Developer"; // Texto desejado
+    const typewriterElement = document.getElementById("typewriter");
+  
+    let index = 0;
+  
+    const typeWriter = () => {
+      if (typewriterElement) {
+        typewriterElement.textContent = typewriterText.slice(0, index); // Atualiza o texto letra por letra
+        index++;
+  
+        if (index <= typewriterText.length) {
+          setTimeout(typeWriter, 100); // Continua escrevendo
+        } else {
+          setTimeout(() => {
+            index = 1; // Reseta o índice
+            typewriterElement.textContent = ""; // Limpa o texto
+            typeWriter(); // Reinicia a animação
+          }, 2000); // Espera 1 segundo antes de reiniciar
+        }
+      }
+    };
+  
+    // Garante que o texto começa vazio e inicia a animação
+    if (typewriterElement) {
+      typewriterElement.textContent = ""; // Limpa o conteúdo inicial
+      typeWriter(); // Inicia a animação
+    }
+  }, []);
+
+
+  // outro use Effect
+  
+
+  useEffect(() => {
     AOS.init({
           duration: 1000,  // Duração da animação
           once: false,      // Anima apenas uma vez, quando o elemento aparecer na tela
