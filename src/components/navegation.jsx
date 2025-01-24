@@ -46,51 +46,53 @@ export default function Home() {
         >
           <h1 className="text-xl font-bold text-zinc-900 dark:text-white transition-all duration-500 hover:scale-105 focus:scale-125">
             <span className="hover:text-red-800 focus:text-red-800 transition-colors duration-500 ease-in-out cursor-pointer">
-            <a href="#inicio" className="relative inline-block">
-            &lt;/ 
-            <motion.span
-              key={text}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 2 }} 
-              exit={{ opacity: 0, scale: 1.05 }} 
-              transition={{
-                duration: 0.3,
-                ease: "easeIn", 
-              }}
-              className="text-red-500 transition-all duration-300 hover:text-white"
-            >
-              {text}
-            </motion.span>
-            &gt;
-          </a>
+              <a href="#inicio" className="relative inline-block">
+                &lt;/
+                <motion.span
+                  key={text}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 2 }}
+                  exit={{ opacity: 0, scale: 1.05 }}
+                  transition={{
+                    duration: 0.3,
+                    ease: "easeIn",
+                  }}
+                  className="text-red-500 transition-all duration-300 hover:text-white"
+                >
+                  {text}
+                </motion.span>
+                &gt;
+              </a>
             </span>
           </h1>
         </motion.button>
 
         {/* Navegação */}
         <div className="flex items-center gap-6">
-        <nav className="flex space-x-6 text-lg">
-  {["Inicio", "Sobre", "Habilidades", "Projetos", "Contatos"].map((item) => {
-    // Configura o offset com base na seção
-    const isSpecialOffset = item === "Habilidades" || item === "Projetos";
-    const offsetValue = isSpecialOffset ? -50 : -70; // 200 para "Habilidades" e "Projetos", 70 para o resto
+          <nav data-aos="fade-down"
+              
+            data-aos-duration="1000" className="flex space-x-6 text-lg ">
+            {["Inicio", "Sobre", "Habilidades", "Projetos", "Contatos"].map((item) => {
+              // Configura o offset com base na seção
+              const isSpecialOffset = item === "Habilidades" || item === "Projetos";
+              const offsetValue = isSpecialOffset ? -50 : -70; // 200 para "Habilidades" e "Projetos", 70 para o resto
 
-    return (
-      <Link
-        key={item}
-        to={item.toLowerCase()} // Vincula ao ID correspondente
-        smooth={true} // Scroll suave
-        duration={100} // Duração do scroll
-        offset={offsetValue} // Offset ajustado dinamicamente
-        className="text-zinc-900 dark:text-white active:scale-125 hover:text-red-800 relative transform transition-transform duration-500 ease-in-out hover:scale-105 cursor-pointer"
-      >
-        <span className="relative hover:text-red-800 after:content-[''] after:block after:w-0 after:h-[2px] after:bg-red-600 after:transition-all after:duration-500 after:ease-in-out hover:after:w-full">
-          <span className="transition-colors duration-500 ease-in-out">{item}</span>
-        </span>
-      </Link>
-    );
-  })}
-</nav>
+              return (
+                <Link
+                  key={item}
+                  to={item.toLowerCase()} // Vincula ao ID correspondente
+                  smooth={true} // Scroll suave
+                  duration={100} // Duração do scroll
+                  offset={offsetValue} // Offset ajustado dinamicamente
+                  className="text-zinc-900 dark:text-white active:scale-125 hover:text-red-800 relative transform transition-transform duration-500 ease-in-out hover:scale-105 cursor-pointer"
+                >
+                  <span className="relative hover:text-red-800 after:content-[''] after:block after:w-0 after:h-[2px] after:bg-red-600 after:transition-all after:duration-500 after:ease-in-out hover:after:w-full">
+                    <span className="transition-colors duration-500 ease-in-out">{item}</span>
+                  </span>
+                </Link>
+              );
+            })}
+          </nav>
 
           {/* Botão de alternância de tema */}
           <motion.button

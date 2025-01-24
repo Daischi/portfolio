@@ -174,6 +174,7 @@ export function Contact() {
                       viewport={{ once: false }}
                       transition={{ duration: 0.6, delay: index * 0.2, ease: "easeInOut" }}
                       onClick={() => handleCopy(item.value)}
+                      
 
                     >
                       <AnimatePresence>
@@ -188,9 +189,9 @@ export function Contact() {
                           </motion.div>
                         )}
                       </AnimatePresence>
-                      <div className="flex items-center gap-6 group">
+                      <div className="flex items-center gap-6 group ">
                         <div
-                          className={`relative p-4 rounded-xl bg-gradient-to-br ${item.color} transform transition-transform group-hover:scale-110`}
+                          className={`bg-zinc-400  dark:bg-red-600 relative p-4 rounded-xl bg-gradient-to-br ${item.color} transform transition-transform group-hover:scale-110`}
                         >
 
                           <item.icon className="w-6 h-6 text-white" />
