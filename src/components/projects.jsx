@@ -197,12 +197,12 @@ function ProjectCarousel() {
                   className="flex gap-4"
                 >
                   <motion.a
-                    whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)" }}
+                    whileHover={{ scale: 1.05, backgroundColor: "" }}
                     whileTap={{ scale: 0.95 }}
                     href={project.codeLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 flex justify-center items-center gap-2 dark:hover:bg-white/5 hover:text-red-500 dark:text-white dark:bg-transparent bg-slate-950 px-6 py-3 rounded-lg transition duration-200 font-medium"
+                    className="flex-1 flex justify-center items-center gap-2 dark:hover:bg-white/5 hover:text-red-500 dark:text-white dark:bg-transparent bg-slate-950 px-6 py-3 rounded-lg transition-all duration-300 font-medium"
                   >
                     <img src={Foto || "/placeholder.svg"} alt="GitHub logo" className="h-5 w-5" />
                     Explorar Código

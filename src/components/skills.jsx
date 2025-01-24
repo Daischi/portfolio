@@ -168,7 +168,7 @@ const Skills = () => {
                 className={`cursor-pointer px-4 py-2 rounded-lg transition-colors ${
                   selectedCategory.title === category.title
                     ? "bg-red-600 text-white"
-                    : "bg-gray-100 dark:bg-opacity-10 text-gray-800 dark:text-gray-200"
+                    : "bg-gray-100 dark:bg-opacity-10 text-gray-800 dark:text-gray-200 "
                 }`}
               >
                 <h3 className="text-xl font-semibold">{category.title}</h3>
@@ -183,7 +183,7 @@ const Skills = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="flex flex-col items-center"
+              className="flex flex-col items-center "
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-6 w-full">
                 {selectedCategory.skills.slice(0, 4).map((skill, index) => (
@@ -191,6 +191,7 @@ const Skills = () => {
                     key={`${skill.name}-${animationKey}`}
                     skill={skill}
                     index={index}
+                    
                   />
                 ))}
               </div>
@@ -200,7 +201,7 @@ const Skills = () => {
                     key={`${skill.name}-${animationKey}`}
                     skill={skill}
                     index={index + 4}
-                  />
+                    />
                 ))}
               </div>
             </motion.div>
