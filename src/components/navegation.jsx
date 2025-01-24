@@ -73,7 +73,7 @@ export default function Home() {
   {["Inicio", "Sobre", "Habilidades", "Projetos", "Contatos"].map((item) => {
     // Configura o offset com base na seção
     const isSpecialOffset = item === "Habilidades" || item === "Projetos";
-    const offsetValue = isSpecialOffset ? -200 : -70; // 200 para "Habilidades" e "Projetos", 70 para o resto
+    const offsetValue = isSpecialOffset ? -50 : -70; // 200 para "Habilidades" e "Projetos", 70 para o resto
 
     return (
       <Link
