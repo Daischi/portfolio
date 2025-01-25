@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon } from "lucide-react";
-import { Link } from "react-scroll"; // Importa o componente do React Scroll
+import { Link } from "react-scroll";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 export default function Home() {
+  // Estados e efeitos
   const [isDark, setIsDark] = useState(true);
+  const [text, setText] = useState("P");
 
+  // Carrega o tema salvo no localStorage ou usa o tema do sistema
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
@@ -17,6 +20,7 @@ export default function Home() {
     }
   }, []);
 
+  // Atualiza o tema no documento e no localStorage
   useEffect(() => {
     if (isDark) {
       document.documentElement.classList.add("dark");
@@ -27,11 +31,12 @@ export default function Home() {
     }
   }, [isDark]);
 
+  // Inicializa animações do AOS
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
 
-  const [text, setText] = useState("P");
+  // Alterna o texto do logo
   const handleTextToggle = () => setText(text === "P" ? "Poppi" : "P");
 
   return (
@@ -53,10 +58,7 @@ export default function Home() {
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 2 }}
                   exit={{ opacity: 0, scale: 1.05 }}
-                  transition={{
-                    duration: 0.3,
-                    ease: "easeIn",
-                  }}
+                  transition={{ duration: 0.3, ease: "easeIn" }}
                   className="text-red-500 transition-all duration-300 hover:text-white"
                 >
                   {text}
@@ -69,25 +71,28 @@ export default function Home() {
 
         {/* Navegação */}
         <div className="flex items-center gap-6">
-          <nav data-aos="fade-down"
-              
-            data-aos-duration="1000" className="flex space-x-6 text-lg ">
-            {["Inicio", "Sobre", "Habilidades", "Projetos", "Contatos"].map((item) => {
-              // Configura o offset com base na seção
+          <nav data-aos="fade-down" data-aos-duration="1000" className="flex space-x-6 text-lg">
+            {[
+              "Inicio",
+              "Sobre",
+              "Habilidades",
+              "Projetos",
+              "Contatos",
+            ].map((item) => {
               const isSpecialOffset = item === "Habilidades" || item === "Projetos";
-              const offsetValue = isSpecialOffset ? -50 : -70; // 200 para "Habilidades" e "Projetos", 70 para o resto
+              const offsetValue = isSpecialOffset ? -50 : -70;
 
               return (
                 <Link
                   key={item}
-                  to={item.toLowerCase()} // Vincula ao ID correspondente
-                  smooth={true} // Scroll suave
-                  duration={100} // Duração do scroll
-                  offset={offsetValue} // Offset ajustado dinamicamente
+                  to={item.toLowerCase()}
+                  smooth={true}
+                  duration={100}
+                  offset={offsetValue}
                   className="text-zinc-900 dark:text-white active:scale-125 hover:text-red-800 relative transform transition-transform duration-500 ease-in-out hover:scale-105 cursor-pointer"
                 >
                   <span className="relative hover:text-red-800 after:content-[''] after:block after:w-0 after:h-[2px] after:bg-red-600 after:transition-all after:duration-500 after:ease-in-out hover:after:w-full">
-                    <span className="transition-colors duration-500 ease-in-out">{item}</span>
+                    {item}
                   </span>
                 </Link>
               );

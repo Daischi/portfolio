@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";  
-import { Github, Linkedin, Phone } from "lucide-react";
-import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react"
+import AOS from "aos"
+import "aos/dist/aos.css"
+import { Github, Linkedin, Phone } from "lucide-react"
+import { motion } from "framer-motion"
+import fotohero from "../assets/fotolinkedin.jpeg"
 
 function SocialIcons() {
   const socialLinks = [
@@ -24,7 +25,7 @@ function SocialIcons() {
       href: "https://wa.me/qr/PJAR6OILE4FKG1",
       color: "hover:text-[#A12F2F]",
     },
-  ];
+  ]
 
   return (
     <div className="flex gap-6 items-center">
@@ -45,46 +46,52 @@ function SocialIcons() {
         </motion.a>
       ))}
     </div>
-  );
+  )
 }
 
 const Hero = () => {
-  const [displayedText, setDisplayedText] = useState(""); // Estado para o texto da animação
-  const typewriterTexts = ["Full Stack Developer", "Seja muito bem-vindo!!"]; // Textos desejados
-  const [currentIndex, setCurrentIndex] = useState(0); // Índice do texto atual
+  const [displayedText, setDisplayedText] = useState("")
+  const typewriterTexts = ["Full Stack Developer", "Seja muito bem-vindo!!"]
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isImageAnimating, setIsImageAnimating] = useState(false)
 
   useEffect(() => {
     AOS.init({
       duration: 1000,
       once: false,
       offset: 200,
-    });
+    })
 
     return () => {
-      AOS.refresh();
-    };
-  }, []);
+      AOS.refresh()
+    }
+  }, [])
 
   useEffect(() => {
-    let index = 0;
-    let currentText = typewriterTexts[currentIndex];
+    let index = 0
+    const currentText = typewriterTexts[currentIndex]
 
     const typeWriter = () => {
       if (index <= currentText.length) {
-        setDisplayedText(currentText.slice(0, index)); // Atualiza o texto letra por letra
-        index++;
+        setDisplayedText(currentText.slice(0, index))
+        index++
       } else {
         setTimeout(() => {
-          setCurrentIndex((prevIndex) => (prevIndex + 1) % typewriterTexts.length); // Alterna entre os textos
-          setDisplayedText(""); // Limpa o texto antes de iniciar o próximo
-        }, 2000); // Pausa de 1 segundo após terminar a escrita
-        clearInterval(interval);
+          setCurrentIndex((prevIndex) => (prevIndex + 1) % typewriterTexts.length)
+          setDisplayedText("")
+        }, 2000)
+        clearInterval(interval)
       }
-    };
+    }
 
-    const interval = setInterval(typeWriter, 100); // Controla a animação da digitação
-    return () => clearInterval(interval); // Limpa o intervalo ao desmontar o componente
-  }, [currentIndex]);
+    const interval = setInterval(typeWriter, 100)
+    return () => clearInterval(interval)
+  }, [currentIndex])
+
+  const handleImageClick = () => {
+    setIsImageAnimating(true)
+    setTimeout(() => setIsImageAnimating(false), 1000) // Reset after animation
+  }
 
   return (
     <main id="inicio" className="flex flex-col justify-center items-center min-h-screen w-full pt-20">
@@ -94,18 +101,12 @@ const Hero = () => {
             &lt;Guilherme <br /> <span className="text-red-600">Poppi/&gt;</span>
           </h1>
 
-          {/* Contêiner fixo para o texto animado */}
           <div className="relative mb-2">
-            {/* Espaço fixo reservado para o texto animado */}
-            <p 
-              className="text-zinc-600 dark:text-zinc-400 text-2xl" 
-              style={{ minHeight: "40px", overflow: "hidden" }}
-            >
+            <p className="text-zinc-600 dark:text-zinc-400 text-2xl" style={{ minHeight: "40px", overflow: "hidden" }}>
               {displayedText}
             </p>
           </div>
 
-          {/* Botão de download fixo */}
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -116,10 +117,32 @@ const Hero = () => {
 
           <SocialIcons />
         </div>
-        <div data-aos-duration="1500" data-aos="fade-left" className="hidden md:block p-60 bg-zinc-200 rounded-full mt-[-70px]" />
+        <motion.div
+          data-aos-duration="1500"
+          data-aos="fade-left"
+          className="hidden md:block relative w-[480px] h-[480px] mt-[-70px] overflow-hidden rounded-full border-solid border-white/15 border-4 cursor-pointer"
+          whileHover={{ scale: 1.05 }}
+          animate={
+            isImageAnimating
+              ? {
+                  scale: [1, 1.2, 1],
+                  rotate: [0, 360, 0],
+                }
+              : {}
+          }
+          transition={{ duration: 1, ease: "easeInOut" }}
+          onClick={handleImageClick}
+        >
+          <img
+            src={fotohero || "/placeholder.svg"}
+            alt="Hero Image"
+            className="w-full h-full object-cover transition-all duration-300"
+          />
+        </motion.div>
       </div>
     </main>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero
+
