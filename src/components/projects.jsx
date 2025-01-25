@@ -13,8 +13,8 @@ const projects = [
   {
     title: "Cadastro de Usuarios",
     description:
-      "Sistema de cadastro de usuários com front-end em React e back-end em Node.js. Permite cadastrar e validar Nome, idade e E-mail, garantindo consistência dos dados.",
-    tags: ["React", "JavaScript", "TailwindCSS"],
+      "O sistema permite cadastrar, editar, excluir e listar usuários, gerenciando informações como nome, idade e e-mail.",
+    tags: ["React", "JavaScript", "TailwindCSS", "Node.js", "Postman" ],
     codeLink: "https://github.com/Daischi/Cadastro-de-Usuario",
     demoLink: "https://registro-usuarios-p420i6z56-guilherme-poppi-limas-projects.vercel.app/",
     image: projetoimg,
@@ -22,7 +22,7 @@ const projects = [
   {
     title: "Tradutor de Linguas",
     description:
-      "Tradutor de Línguas, uma aplicação de tradução simples e elegante desenvolvida em React. Este projeto permite aos usuários traduzir textos entre várias línguas de forma fácil e intuitiva.",
+      "Tradutor de Línguas é uma aplicação em React que permite traduções rápidas e fáceis entre diversos idiomas.",
     tags: ["React", "JavaScript", "TailwindCSS"],
     codeLink: "https://github.com/Daischi/Tradutor",
     demoLink: "https://tradutor-cxwozngvm-guilherme-poppi-limas-projects.vercel.app/",
@@ -31,7 +31,7 @@ const projects = [
   {
     title: "Poppi Books",
     description:
-      "Poppi Book é um site de venda de livros, oferecendo uma plataforma prática e agradável para explorar e adquirir títulos diversos, com uma navegação fluida em qualquer dispositivo.",
+      "Poppi Book é um site de vendas de livros, com uma seleção inicial de títulos na página principal.",
     tags: ["HTML", "JavaScript", "CSS"],
     codeLink: "https://github.com/Daischi/Poppi__Books",
     demoLink: "https://daischi.github.io/Poppi__Books/",
@@ -165,7 +165,7 @@ function ProjectCarousel() {
                     className="text-gray-600 dark:text-gray-300 mb-6 text-lg leading-relaxed"
                   >
                     {project.title === "Cadastro de Usuarios"
-                      ? "Um sistema robusto e intuitivo para gerenciamento de usuários, desenvolvido com React e Node.js. Este projeto demonstra boas práticas de desenvolvimento web, incluindo validação de dados em tempo real, interface responsiva e integração backend-frontend segura."
+                      ? "Este projeto é um sistema simples de cadastro de usuários que permite registrar, visualizar e gerenciar informações básicas, como nome, idade e e-mail. Ele foi desenvolvido para praticar habilidades de integração front-end e back-end, utilizando uma API própria criada por mim, disponível em meu github, além de serviços modernos de hospedagem para um fluxo de CI/CD simples."
                       : project.title === "Tradutor de Linguas"
                         ? "Uma ferramenta de tradução moderna e eficiente que suporta múltiplos idiomas. Desenvolvida com React e APIs de tradução state-of-the-art, oferece tradução instantânea com uma interface limpa e amigável, perfeita para uso diário."
                         : "Uma plataforma de e-commerce especializada em livros, construída com foco na experiência do usuário. Apresenta um design responsivo, sistema de busca eficiente e interface intuitiva para navegação e compra de livros."}
