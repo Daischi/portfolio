@@ -58,7 +58,7 @@ export default function Home() {
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 2 }}
                   exit={{ opacity: 0, scale: 1.05 }}
-                  transition={{ duration: 0.3, ease: "easeIn" }}
+                  transition={{ duration: 1 }}
                   className="text-red-500 transition-all duration-300 hover:text-white"
                 >
                   {text}
