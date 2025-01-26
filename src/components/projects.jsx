@@ -10,15 +10,17 @@ import tradutor from "../assets/tradutor.png"
 import poppibooks from "../assets/poppibooks.png"
 
 const projects = [
+
   {
-    title: "Cadastro de Usuarios",
+    title: "Poppi Books",
     description:
-      "O sistema permite cadastrar, editar, excluir e listar usuários, gerenciando informações como nome, idade e e-mail.",
-    tags: ["React", "JavaScript", "TailwindCSS", "Node.js", "Postman" ],
-    codeLink: "https://github.com/Daischi/Cadastro-de-Usuario",
-    demoLink: "https://registro-usuarios-p420i6z56-guilherme-poppi-limas-projects.vercel.app/",
-    image: projetoimg,
+      "Poppi Book é um site de vendas de livros, com uma seleção inicial de títulos na página principal.",
+    tags: ["HTML", "JavaScript", "CSS"],
+    codeLink: "https://github.com/Daischi/Poppi__Books",
+    demoLink: "https://daischi.github.io/Poppi__Books/",
+    image: poppibooks,
   },
+  
   {
     title: "Tradutor de Linguas",
     description:
@@ -28,14 +30,15 @@ const projects = [
     demoLink: "https://tradutor-cxwozngvm-guilherme-poppi-limas-projects.vercel.app/",
     image: tradutor,
   },
+ 
   {
-    title: "Poppi Books",
+    title: "Cadastro de Usuarios",
     description:
-      "Poppi Book é um site de vendas de livros, com uma seleção inicial de títulos na página principal.",
-    tags: ["HTML", "JavaScript", "CSS"],
-    codeLink: "https://github.com/Daischi/Poppi__Books",
-    demoLink: "https://daischi.github.io/Poppi__Books/",
-    image: poppibooks,
+      "O sistema permite cadastrar, editar, excluir e listar usuários, gerenciando informações como nome, idade e e-mail.",
+    tags: ["React", "JavaScript", "TailwindCSS", "Node.js", "Postman" ],
+    codeLink: "https://github.com/Daischi/Cadastro-de-Usuario",
+    demoLink: "https://registro-usuarios-p420i6z56-guilherme-poppi-limas-projects.vercel.app/",
+    image: projetoimg,
   },
 ]
 

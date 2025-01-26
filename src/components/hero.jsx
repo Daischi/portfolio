@@ -51,7 +51,7 @@ function SocialIcons() {
 
 const Hero = () => {
   const [displayedText, setDisplayedText] = useState("")
-  const typewriterTexts = ["Full Stack Developer", "Seja muito bem-vindo!!"]
+  const typewriterTexts = ["Front-End Developer", "Seja muito bem-vindo!!"]
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isImageAnimating, setIsImageAnimating] = useState(false)
 
@@ -112,7 +112,14 @@ const Hero = () => {
             whileTap={{ scale: 0.95 }}
             className="bg-red-600 hover:bg-red-700 text-white px-6 py-4 rounded-md transition-colors duration-300 font-semibold mb-6"
           >
-            Download CV
+            <a 
+            
+            download="Curriculo.pdf"
+            href="/Curriculo.pdf">
+             
+              
+              Download CV</a>
+            
           </motion.button>
 
           <SocialIcons />
