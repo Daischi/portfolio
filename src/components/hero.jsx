@@ -28,7 +28,7 @@ function SocialIcons() {
   ]
 
   return (
-    <div className="flex gap-6 items-center">
+    <div className="flex gap-6 items-center justify-center md:justify-start">
       {socialLinks.map((social) => (
         <motion.a
           key={social.name}
@@ -94,15 +94,26 @@ const Hero = () => {
   }
 
   return (
-    <main id="inicio" className="flex flex-col justify-center items-center min-h-screen w-full pt-20">
-      <div className="text-center grid grid-cols-1 md:grid-cols-2 gap-x-56">
-        <div data-aos-duration="1500" data-aos="fade-right" className="text-left">
-          <h1 className="text-7xl font-bold text-zinc-900 dark:text-white mb-4">
-            &lt;Guilherme <br /> <span className="text-red-600">Poppi/&gt;</span>
+    <main
+      id="inicio"
+      className="flex flex-col justify-center items-center min-h-screen w-full pt-20"
+    >
+      <div className="text-center md:text-left grid grid-cols-1 md:grid-cols-2 md:gap-x-56 items-center">
+        <div
+          data-aos-duration="1500"
+          data-aos="fade-right"
+          className="px-6 md:px-0"
+        >
+          <h1 className="text-4xl md:text-7xl font-bold text-zinc-900 dark:text-white mb-4">
+            &lt;Guilherme <br />{" "}
+            <span className="text-red-600">Poppi/&gt;</span>
           </h1>
 
           <div className="relative mb-2">
-            <p className="text-zinc-600 dark:text-zinc-400 text-2xl" style={{ minHeight: "40px", overflow: "hidden" }}>
+            <p
+              className="text-zinc-600 dark:text-zinc-400 text-lg md:text-2xl"
+              style={{ minHeight: "40px", overflow: "hidden" }}
+            >
               {displayedText}
             </p>
           </div>
@@ -112,44 +123,39 @@ const Hero = () => {
             whileTap={{ scale: 0.95 }}
             className="bg-red-600 hover:bg-red-700 text-white px-6 py-4 rounded-md transition-colors duration-300 font-semibold mb-6"
           >
-            <a 
-            
-            download="Curriculo.pdf"
-            href="/Curriculo.pdf">
-             
-              
-              Download CV</a>
-            
+            <a download="Curriculo.pdf" href="/Curriculo.pdf">
+              Download CV
+            </a>
           </motion.button>
 
           <SocialIcons />
         </div>
         <motion.div
-          data-aos-duration="1500"
-          data-aos="fade-left"
-          className="hidden md:block relative w-[480px] h-[480px] mt-[-70px] overflow-hidden rounded-full border-solid border-white/15 border-4 cursor-pointer"
-          whileHover={{ scale: 1.05 }}
-          animate={
-            isImageAnimating
-              ? {
-                  scale: [1, 1.2, 1],
-                  rotate: [0, 360, 0],
-                }
-              : {}
-          }
-          transition={{ duration: 1, ease: "easeInOut" }}
-          onClick={handleImageClick}
-        >
-          <img
-            src={fotohero || "/placeholder.svg"}
-            alt="Hero Image"
-            className="w-full h-full object-cover transition-all duration-300"
-          />
-        </motion.div>
+  data-aos-duration="1500"
+  data-aos="fade-left"
+  className="relative w-[300px] h-[300px] md:w-[480px] md:h-[480px] overflow-hidden rounded-full border-solid border-white/15 border-4 cursor-pointer mx-auto md:mx-0 mt-6 md:mt-0"
+  whileHover={{ scale: 1.05 }}
+  animate={
+    isImageAnimating
+      ? {
+          scale: [1, 1.2, 1],
+          rotate: [0, 360, 0],
+        }
+      : {}
+  }
+  transition={{ duration: 1, ease: "easeInOut" }}
+  onClick={handleImageClick}
+>
+  <img
+    src={fotohero || "/placeholder.svg"}
+    alt="Hero Image"
+    className="w-full h-full object-cover transition-all duration-300"
+  />
+</motion.div>
+
       </div>
     </main>
   )
 }
 
 export default Hero
-

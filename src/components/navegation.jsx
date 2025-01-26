@@ -9,6 +9,7 @@ export default function Home() {
   // Estados e efeitos
   const [isDark, setIsDark] = useState(true);
   const [text, setText] = useState("P");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Carrega o tema salvo no localStorage ou usa o tema do sistema
   useEffect(() => {
@@ -70,15 +71,9 @@ export default function Home() {
         </motion.button>
 
         {/* Navegação */}
-        <div className="flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-6">
           <nav data-aos="fade-down" data-aos-duration="1000" className="flex space-x-6 text-lg">
-            {[
-              "Inicio",
-              "Sobre",
-              "Habilidades",
-              "Projetos",
-              "Contatos",
-            ].map((item) => {
+            {["Inicio", "Sobre", "Habilidades", "Projetos", "Contatos"].map((item) => {
               const isSpecialOffset = item === "Habilidades" || item === "Projetos";
               const offsetValue = isSpecialOffset ? -50 : -70;
 
@@ -136,6 +131,44 @@ export default function Home() {
               {isDark ? "Light Mode" : "Dark Mode"}
             </span>
           </motion.button>
+        </div>
+
+        {/* Menu Mobile */}
+        <div className="flex md:hidden items-center">
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="p-2 rounded-md focus:outline-none hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+          >
+            <span className="sr-only">Open Menu</span>
+            <div className="w-6 h-6 flex flex-col justify-between">
+              <span className="block w-full h-[2px] bg-zinc-900 dark:bg-white"></span>
+              <span className="block w-full h-[2px] bg-zinc-900 dark:bg-white"></span>
+              <span className="block w-full h-[2px] bg-zinc-900 dark:bg-white"></span>
+            </div>
+          </button>
+
+          {isMenuOpen && (
+            <motion.nav
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="absolute top-16 right-4 bg-white dark:bg-zinc-900 rounded-md shadow-lg p-4 z-50"
+            >
+              {["Inicio", "Sobre", "Habilidades", "Projetos", "Contatos"].map((item) => (
+                <Link
+                  key={item}
+                  to={item.toLowerCase()}
+                  smooth={true}
+                  duration={100}
+                  offset={-50}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block text-zinc-900 dark:text-white py-2 px-4 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+                >
+                  {item}
+                </Link>
+              ))}
+            </motion.nav>
+          )}
         </div>
       </div>
     </header>
