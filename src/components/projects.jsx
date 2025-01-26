@@ -1,6 +1,4 @@
-"use client"
-
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import AOS from "aos"
 import "aos/dist/aos.css"
@@ -10,17 +8,14 @@ import tradutor from "../assets/tradutor.png"
 import poppibooks from "../assets/poppibooks.png"
 
 const projects = [
-
   {
     title: "Poppi Books",
-    description:
-      "Poppi Book é um site de vendas de livros, com uma seleção inicial de títulos na página principal.",
+    description: "Poppi Book é um site de vendas de livros, com uma seleção inicial de títulos na página principal.",
     tags: ["HTML", "JavaScript", "CSS"],
     codeLink: "https://github.com/Daischi/Poppi__Books",
     demoLink: "https://daischi.github.io/Poppi__Books/",
     image: poppibooks,
   },
-  
   {
     title: "Tradutor de Linguas",
     description:
@@ -30,12 +25,11 @@ const projects = [
     demoLink: "https://tradutor-cxwozngvm-guilherme-poppi-limas-projects.vercel.app/",
     image: tradutor,
   },
- 
   {
     title: "Cadastro de Usuarios",
     description:
       "O sistema permite cadastrar, editar, excluir e listar usuários, gerenciando informações como nome, idade e e-mail.",
-    tags: ["React", "JavaScript", "TailwindCSS", "Node.js", "Postman" ],
+    tags: ["React", "JavaScript", "TailwindCSS", "Node.js", "Postman"],
     codeLink: "https://github.com/Daischi/Cadastro-de-Usuario",
     demoLink: "https://registro-usuarios-p420i6z56-guilherme-poppi-limas-projects.vercel.app/",
     image: projetoimg,
@@ -46,6 +40,7 @@ function ProjectCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [previewOpen, setPreviewOpen] = useState(false)
   const [hoveredImage, setHoveredImage] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? projects.length - 1 : prevIndex - 1))
@@ -61,6 +56,15 @@ function ProjectCarousel() {
       once: false,
       offset: 300,
     })
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    handleResize()
+    window.addEventListener("resize", handleResize)
+
+    return () => window.removeEventListener("resize", handleResize)
   }, [])
 
   useEffect(() => {
@@ -77,6 +81,10 @@ function ProjectCarousel() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  useEffect(() => {
+    console.log("Preview state changed:", previewOpen) // Para debug
+  }, [previewOpen])
 
   const PreviewModal = ({ isOpen, onClose, project }) => {
     useEffect(() => {
@@ -230,7 +238,7 @@ function ProjectCarousel() {
   }
 
   return (
-    <section id="projetos" className="flex flex-col items-center justify-center text-white min-h-screen">
+    <section id="projetos" className="flex flex-col items-center justify-center text-white min-h-screen px-4 md:px-0">
       <motion.span
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -241,22 +249,24 @@ function ProjectCarousel() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-4xl font-bold mb-12 dark:text-white text-black"
+          className="text-3xl md:text-4xl font-bold mb-8 md:mb-12 dark:text-white text-black"
           data-aos="fade-right"
         >
           <p data-aos="fade-right"> Projetos </p>
         </motion.h2>
       </motion.span>
 
-      <div data-aos="fade-up" className="relative flex items-center gap-4 overflow-hidden w-[65%]">
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className="text-2xl dark:text-white hover:opacity-75 transition duration-700 dark:hover:bg-white/5 rounded-full p-4 text-slate-950 hover:bg-zinc-100"
-          onClick={prevSlide}
-        >
-          &lt;
-        </motion.button>
+      <div data-aos="fade-up" className="relative flex items-center gap-4 overflow-hidden w-full md:w-[65%]">
+        {!isMobile && (
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="text-2xl dark:text-white hover:opacity-75 transition duration-700 dark:hover:bg-white/5 rounded-full p-4 text-slate-950 hover:bg-zinc-100"
+            onClick={prevSlide}
+          >
+            &lt;
+          </motion.button>
+        )}
 
         <AnimatePresence mode="wait">
           <motion.div
@@ -265,14 +275,19 @@ function ProjectCarousel() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col md:flex-row gap-6 items-center p-6 rounded-lg shadow-lg"
+            className="flex flex-col md:flex-row gap-6 items-center p-4 md:p-6 rounded-lg shadow-lg"
           >
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="relative h-80 mr-6 flex items-center justify-center text-gray-400 rounded-md overflow-hidden cursor-pointer"
-              onHoverStart={() => setHoveredImage(true)}
-              onHoverEnd={() => setHoveredImage(false)}
-              onClick={() => setPreviewOpen(true)}
+              className="relative h-60 md:h-80 w-full md:w-auto md:mr-6 flex items-center justify-center text-gray-400 rounded-md overflow-hidden cursor-pointer"
+              onHoverStart={() => !isMobile && setHoveredImage(true)}
+              onHoverEnd={() => !isMobile && setHoveredImage(false)}
+              onClick={() => {
+                if (!isMobile) {
+                  setPreviewOpen(true)
+                  console.log("Preview opened") // Para debug
+                }
+              }}
             >
               <img
                 src={projects[currentIndex].image || "/placeholder.svg"}
@@ -280,7 +295,7 @@ function ProjectCarousel() {
                 className="h-full w-full object-cover rounded-lg transition duration-500 ease-in-out"
               />
               <AnimatePresence>
-                {hoveredImage && (
+                {!isMobile && hoveredImage && (
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -298,7 +313,7 @@ function ProjectCarousel() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="dark:text-white text-slate-900 font-semibold text-2xl dark:font-bold"
+                className="dark:text-white text-slate-900 font-semibold text-xl md:text-2xl dark:font-bold"
               >
                 {projects[currentIndex].title}
               </motion.h3>
@@ -306,7 +321,7 @@ function ProjectCarousel() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="dark:text-zinc-400 text-slate-600 w-[550px]"
+                className="dark:text-zinc-400 text-slate-600 w-full md:w-[550px]"
               >
                 {projects[currentIndex].description}
               </motion.p>
@@ -314,7 +329,7 @@ function ProjectCarousel() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="flex gap-2"
+                className="flex flex-wrap gap-2"
               >
                 {projects[currentIndex].tags.map((tag) => (
                   <span
@@ -359,14 +374,16 @@ function ProjectCarousel() {
           </motion.div>
         </AnimatePresence>
 
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className="text-2xl dark:text-white hover:opacity-75 transition duration-700 dark:hover:bg-white/5 rounded-full p-4 text-slate-950 hover:bg-zinc-100"
-          onClick={nextSlide}
-        >
-          &gt;
-        </motion.button>
+        {!isMobile && (
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="text-2xl dark:text-white hover:opacity-75 transition duration-700 dark:hover:bg-white/5 rounded-full p-4 text-slate-950 hover:bg-zinc-100"
+            onClick={nextSlide}
+          >
+            &gt;
+          </motion.button>
+        )}
       </div>
       <div className="flex gap-2 mt-4">
         {projects.map((_, index) => (
@@ -382,9 +399,19 @@ function ProjectCarousel() {
         ))}
       </div>
 
-      <PreviewModal isOpen={previewOpen} onClose={() => setPreviewOpen(false)} project={projects[currentIndex]} />
+      {!isMobile && (
+        <PreviewModal
+          isOpen={previewOpen}
+          onClose={() => {
+            setPreviewOpen(false)
+            console.log("Preview closed") // Para debug
+          }}
+          project={projects[currentIndex]}
+        />
+      )}
     </section>
   )
 }
 
 export default ProjectCarousel
+
