@@ -96,7 +96,7 @@ const Hero = () => {
   return (
     <main
       id="inicio"
-      className="flex flex-col justify-center items-center min-h-screen w-full pt-20"
+      className="flex flex-col justify-center items-center min-h-screen w-full"
     >
       <div className="text-center md:text-left grid grid-cols-1 md:grid-cols-2 md:gap-x-56 items-center">
         <div
@@ -133,7 +133,7 @@ const Hero = () => {
         <motion.div
   data-aos-duration="1500"
   data-aos="fade-left"
-  className="relative w-[300px] h-[300px] md:w-[480px] md:h-[480px] overflow-hidden rounded-full border-solid border-white/15 border-4 cursor-pointer mx-auto md:mx-0 mt-6 md:mt-0"
+  className="relative w-[300px] h-[300px] md:w-[480px] md:h-[480px] overflow-hidden rounded-full border-solid dark:border-white/15 border-zinc-200 border-4 cursor-pointer mx-auto md:mx-0 mt-6 md:mt-0"
   whileHover={{ scale: 1.05 }}
   animate={
     isImageAnimating
