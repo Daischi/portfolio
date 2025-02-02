@@ -6,8 +6,22 @@ import projetoimg from "../assets/projeto.png"
 import Foto from "../assets/github.png"
 import tradutor from "../assets/tradutor.png"
 import poppibooks from "../assets/poppibooks.png"
+import poppitter from "../assets/poppitter.png"
+
+
 
 const projects = [
+
+  {
+    title: "Poppitter",
+    description: "Clone simplificado do Twitter com React e Tailwind, exibindo tweets gerados aleatoriamente.",
+    tags: ["React", "Crypto", "TailwindCSS", "FontAwesome"],
+    codeLink: "https://github.com/Daischi/Twitter-Clone",
+    demoLink: "https://twitter-clone-alpha-azure-89.vercel.app/",
+    image: poppitter,
+  },
+
+
   {
     title: "Poppi Books",
     description: "Poppi Book é um site de vendas de livros, com uma seleção inicial de títulos na página principal.",
@@ -175,11 +189,18 @@ function ProjectCarousel() {
                     transition={{ delay: 0.5 }}
                     className="text-gray-600 dark:text-gray-300 mb-6 text-lg leading-relaxed"
                   >
-                    {project.title === "Cadastro de Usuarios"
-                      ? "Este projeto é um sistema simples de cadastro de usuários que permite registrar, visualizar e gerenciar informações básicas, como nome, idade e e-mail. Ele foi desenvolvido para praticar habilidades de integração front-end e back-end, utilizando uma API própria criada por mim, disponível em meu github, além de serviços modernos de hospedagem para um fluxo de CI/CD simples."
+                    {
+                    
+                    
+                    project.title === "Poppitter"
+                    ? "Poppitter é um clone simplificado do Twitter, desenvolvido com React e Tailwind. Ele exibe tweets gerados aleatoriamente e permite ao usuário postar novos tweets com IDs únicos. A plataforma inclui uma interface limpa e funcional, simulando a experiência do Twitter."
+                    : project.title === "Cadastro de Usuarios"
+                      ? "Este projeto é um sistema simples de cadastro de usuários que permite registrar, visualizar e gerenciar informações básicas, como nome, idade e e-mail."
                       : project.title === "Tradutor de Linguas"
-                        ? "Uma ferramenta de tradução moderna e eficiente que suporta múltiplos idiomas. Desenvolvida com React e APIs de tradução state-of-the-art, oferece tradução instantânea com uma interface limpa e amigável, perfeita para uso diário."
-                        : "Uma plataforma de e-commerce especializada em livros, construída com foco na experiência do usuário. Apresenta um design responsivo, sistema de busca eficiente e interface intuitiva para navegação e compra de livros."}
+                        ? "Uma ferramenta de tradução moderna e eficiente que suporta múltiplos idiomas."
+                        : "Uma plataforma de e-commerce especializada em livros."
+                        
+                        }
                   </motion.p>
                   <motion.div
                     initial={{ y: 10, opacity: 0 }}
