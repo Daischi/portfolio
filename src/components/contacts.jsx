@@ -1,5 +1,3 @@
-"use client"
-
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, Mail, MapPin, Phone, Github, Linkedin, Check, AlertCircle, } from "lucide-react";
@@ -42,10 +40,10 @@ export function Contact() {
       };
 
       await emailjs.send(
-        "YOUR_SERVICE_ID", // Substitua pelo seu Service ID
-        "YOUR_TEMPLATE_ID", // Substitua pelo seu Template ID
+        "poppiGmail", // Substitua pelo seu Service ID
+        "template_l6047kw", // Substitua pelo seu Template ID
         templateParams,
-        "YOUR_PUBLIC_KEY" // Substitua pela sua Public Key
+        "wXhLujUJyPNeWc2KR" // Substitua pela sua Public Key
       );
 
       setFormState({ isSubmitting: false, isSubmitted: true, error: null });
