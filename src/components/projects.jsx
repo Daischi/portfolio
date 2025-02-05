@@ -198,7 +198,7 @@ function ProjectCarousel() {
                       ? "Este projeto é um sistema simples de cadastro de usuários que permite registrar, visualizar e gerenciar informações básicas, como nome, idade e e-mail. Para armazenar e gerenciar os dados, utilizei uma API que eu mesmo desenvolvi, garantindo maior controle sobre o backend. Essa API está disponível no meu GitHub para quem quiser explorar ou contribuir com melhorias."
                       : project.title === "Tradutor de Linguas"
                         ? "Uma ferramenta de tradução moderna e eficiente que suporta múltiplos idiomas."
-                        : "Uma plataforma de e-commerce especializada em livros."
+                        : "Este projeto é um e-commerce de livros, atualmente com apenas a landing page. A página apresenta a proposta da plataforma, com um design moderno e responsivo, destacando benefícios como variedade de títulos e facilidade de compra."
                         
                         }
                   </motion.p>
