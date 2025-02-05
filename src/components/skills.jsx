@@ -1,14 +1,18 @@
-"use client";
-
-import { useState, useEffect, useRef, createContext, useContext } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import { useState, useEffect, useRef, createContext, useContext } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import AOS from "aos"
+import "aos/dist/aos.css"
+import PropTypes from "prop-types"
 
 const AnimationContext = createContext({
   shouldAnimate: false,
   animationKey: 0,
-});
+})
+
+AnimationContext.propTypes = {
+  shouldAnimate: PropTypes.bool.isRequired,
+  animationKey: PropTypes.number.isRequired,
+}
 
 const skillCategories = [
   {
@@ -47,28 +51,47 @@ const skillCategories = [
       { name: "Windows", level: 90 },
     ],
   },
-];
+]
+
+const skillCategoryPropTypes = PropTypes.shape({
+  title: PropTypes.string.isRequired,
+  skills: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      level: PropTypes.number.isRequired,
+    }),
+  ).isRequired,
+})
+
+PropTypes.checkPropTypes(
+  {
+    skillCategories: PropTypes.arrayOf(skillCategoryPropTypes).isRequired,
+  },
+  { skillCategories },
+  "prop",
+  "skillCategories",
+)
 
 const SkillCard = ({ skill, index }) => {
-  const { shouldAnimate, animationKey } = useContext(AnimationContext);
-  const [animatedValue, setAnimatedValue] = useState(0);
+  const { shouldAnimate, animationKey } = useContext(AnimationContext)
+  const [animatedValue, setAnimatedValue] = useState(0)
 
   useEffect(() => {
     if (shouldAnimate) {
-      setAnimatedValue(0); // Reinicia a animação
+      setAnimatedValue(0) // Reinicia a animação
       const interval = setInterval(() => {
         setAnimatedValue((prev) => {
-          const nextValue = prev + 1;
+          const nextValue = prev + 1
           if (nextValue >= skill.level) {
-            clearInterval(interval);
-            return skill.level; // Alcança o valor final
+            clearInterval(interval)
+            return skill.level // Alcança o valor final
           }
-          return nextValue;
-        });
-      }, 3); // Velocidade da animação
-      return () => clearInterval(interval);
+          return nextValue
+        })
+      }, 3) // Velocidade da animação
+      return () => clearInterval(interval)
     }
-  }, [shouldAnimate, skill.level, animationKey]);
+  }, [shouldAnimate, skill.level, animationKey])
 
   return (
     <motion.div
@@ -94,52 +117,57 @@ const SkillCard = ({ skill, index }) => {
         </span>
       </div>
     </motion.div>
-  );
-};
+  )
+}
+
+SkillCard.propTypes = {
+  skill: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    level: PropTypes.number.isRequired,
+  }).isRequired,
+  index: PropTypes.number.isRequired,
+}
 
 const Skills = () => {
-  const [selectedCategory, setSelectedCategory] = useState(skillCategories[0]);
-  const [shouldAnimate, setShouldAnimate] = useState(false);
-  const [animationKey, setAnimationKey] = useState(0);
-  const sectionRef = useRef(null);
+  const [selectedCategory, setSelectedCategory] = useState(skillCategories[0])
+  const [shouldAnimate, setShouldAnimate] = useState(false)
+  const [animationKey, setAnimationKey] = useState(0)
+  const sectionRef = useRef(null)
 
   useEffect(() => {
     AOS.init({
       duration: 1000,
       once: false,
       offset: 200,
-    });
+    })
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setShouldAnimate(true);
-          setAnimationKey((prev) => prev + 1);
+          setShouldAnimate(true)
+          setAnimationKey((prev) => prev + 1)
         } else {
-          setShouldAnimate(false);
+          setShouldAnimate(false)
         }
       },
-      { threshold: 0.1 }
-    );
+      { threshold: 0.1 },
+    )
 
     if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+      observer.observe(sectionRef.current)
     }
 
     return () => {
       if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        observer.unobserve(sectionRef.current)
       }
-    };
-  }, []);
+    }
+  }, [])
 
   return (
     <AnimationContext.Provider value={{ shouldAnimate, animationKey }}>
-      <section
-        ref={sectionRef}
-        id="habilidades"
-        className="mb-15 mt-20 py-20 px-4 md:px-8 overflow-hidden"
-      >
+      <section ref={sectionRef} id="habilidades" className="mb-15 mt-20 py-20 px-4 md:px-8 overflow-hidden">
         <div className="max-w-6xl mx-auto">
           <motion.h2
             data-aos="fade-right"
@@ -149,10 +177,7 @@ const Skills = () => {
             transition={{ duration: 0.5 }}
             className="text-4xl font-bold text-center mb-12 dark:text-white"
           >
-            <span
-              data-aos="fade-right"
-              className="underline underline-offset-8 decoration-red-600"
-            >
+            <span data-aos="fade-right" className="underline underline-offset-8 decoration-red-600">
               Habilidades
             </span>
           </motion.h2>
@@ -187,21 +212,12 @@ const Skills = () => {
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-6 w-full">
                 {selectedCategory.skills.slice(0, 4).map((skill, index) => (
-                  <SkillCard
-                    key={`${skill.name}-${animationKey}`}
-                    skill={skill}
-                    index={index}
-                    
-                  />
+                  <SkillCard key={`${skill.name}-${animationKey}`} skill={skill} index={index} />
                 ))}
               </div>
               <div className="flex flex-col sm:flex-row justify-center gap-6 w-full max-w-3xl">
                 {selectedCategory.skills.slice(4, 7).map((skill, index) => (
-                  <SkillCard
-                    key={`${skill.name}-${animationKey}`}
-                    skill={skill}
-                    index={index + 4}
-                    />
+                  <SkillCard key={`${skill.name}-${animationKey}`} skill={skill} index={index + 4} />
                 ))}
               </div>
             </motion.div>
@@ -209,7 +225,11 @@ const Skills = () => {
         </div>
       </section>
     </AnimationContext.Provider>
-  );
-};
+  )
+}
 
-export default Skills;
+Skills.propTypes = {
+  // Se você precisar passar props para o componente Skills no futuro, defina-as aqui
+}
+
+export default Skills
