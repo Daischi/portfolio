@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import AOS from "aos"
 import "aos/dist/aos.css"
-import projetoimg from "../assets/projeto.png"
-import Foto from "../assets/github.png"
-import tradutor from "../assets/tradutor.png"
-import poppibooks from "../assets/poppibooks.png"
-import poppitter from "../assets/poppitter.png"
+import projetoimg from "../assets/projeto.webp"
+import Foto from "../assets/github.webp"
+import tradutor from "../assets/tradutor.webp"
+import poppibooks from "../assets/poppibooks.webp"
+import poppitter from "../assets/poppitter.webp"
 
 
 
