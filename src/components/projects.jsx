@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import AOS from "aos"
 import "aos/dist/aos.css"
@@ -7,11 +7,9 @@ import Foto from "../assets/github.webp"
 import tradutor from "../assets/tradutor.webp"
 import poppibooks from "../assets/poppibooks.webp"
 import poppitter from "../assets/poppitter.webp"
-
-
+import PropTypes from "prop-types"
 
 const projects = [
-
   {
     title: "Poppitter",
     description: "Clone simplificado do Twitter com React e Tailwind, exibindo tweets gerados aleatoriamente.",
@@ -20,7 +18,6 @@ const projects = [
     demoLink: "https://twitter-clone-alpha-azure-89.vercel.app/",
     image: poppitter,
   },
-
 
   {
     title: "Poppi Books",
@@ -189,18 +186,13 @@ function ProjectCarousel() {
                     transition={{ delay: 0.5 }}
                     className="text-gray-600 dark:text-gray-300 mb-6 text-lg leading-relaxed"
                   >
-                    {
-                    
-                    
-                    project.title === "Poppitter"
-                    ? "Poppitter é um clone simplificado do Twitter, desenvolvido com React e Tailwind. Ele exibe tweets gerados aleatoriamente e permite ao usuário postar novos tweets com IDs únicos. A plataforma inclui uma interface limpa e funcional, simulando a experiência do Twitter."
-                    : project.title === "Cadastro de Usuarios"
-                      ? "Este projeto é um sistema simples de cadastro de usuários que permite registrar, visualizar e gerenciar informações básicas, como nome, idade e e-mail. Para armazenar e gerenciar os dados, utilizei uma API que eu mesmo desenvolvi, garantindo maior controle sobre o backend. Essa API está disponível no meu GitHub para quem quiser explorar ou contribuir com melhorias."
-                      : project.title === "Tradutor de Linguas"
-                        ? "Uma ferramenta de tradução moderna e eficiente que suporta múltiplos idiomas."
-                        : "Este projeto é um e-commerce de livros, atualmente com apenas a landing page. A página apresenta a proposta da plataforma, com um design moderno e responsivo, destacando benefícios como variedade de títulos e facilidade de compra."
-                        
-                        }
+                    {project.title === "Poppitter"
+                      ? "Poppitter é um clone simplificado do Twitter, desenvolvido com React e Tailwind. Ele exibe tweets gerados aleatoriamente e permite ao usuário postar novos tweets com IDs únicos. A plataforma inclui uma interface limpa e funcional, simulando a experiência do Twitter."
+                      : project.title === "Cadastro de Usuarios"
+                        ? "Este projeto é um sistema simples de cadastro de usuários que permite registrar, visualizar e gerenciar informações básicas, como nome, idade e e-mail. Para armazenar e gerenciar os dados, utilizei uma API que eu mesmo desenvolvi, garantindo maior controle sobre o backend. Essa API está disponível no meu GitHub para quem quiser explorar ou contribuir com melhorias."
+                        : project.title === "Tradutor de Linguas"
+                          ? "Uma ferramenta de tradução moderna e eficiente que suporta múltiplos idiomas."
+                          : "Este projeto é um e-commerce de livros, atualmente com apenas a landing page. A página apresenta a proposta da plataforma, com um design moderno e responsivo, destacando benefícios como variedade de títulos e facilidade de compra."}
                   </motion.p>
                   <motion.div
                     initial={{ y: 10, opacity: 0 }}
@@ -256,6 +248,19 @@ function ProjectCarousel() {
         </motion.div>
       </AnimatePresence>
     )
+  }
+
+  PreviewModal.propTypes = {
+    isOpen: PropTypes.bool.isRequired,
+    onClose: PropTypes.func.isRequired,
+    project: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+      codeLink: PropTypes.string.isRequired,
+      demoLink: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+    }).isRequired,
   }
 
   return (
