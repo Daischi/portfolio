@@ -84,9 +84,9 @@ export default function Home() {
                   smooth={true}
                   duration={100}
                   offset={offsetValue}
-                  className="text-zinc-900 dark:text-white active:scale-125 hover:text-red-800 relative transform transition-transform duration-500 ease-in-out hover:scale-105 cursor-pointer"
+                  className="text-zinc-900 dark:text-white active:scale-125 hover:text-red-800 relative transform transition-transform duration-700 ease-in-out hover:scale-105 cursor-pointer"
                 >
-                  <span className="relative hover:text-red-800 after:content-[''] after:block after:w-0 after:h-[2px] after:bg-red-600 after:transition-all after:duration-500 after:ease-in-out hover:after:w-full">
+                  <span className="relative hover:text-red-800 after:content-[''] after:block after:w-0 after:h-[2px] after:bg-red-600 after:transition-all after:duration-700 after:ease-in-out hover:after:w-full">
                     {item}
                   </span>
                 </Link>

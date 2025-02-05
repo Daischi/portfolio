@@ -24,7 +24,7 @@ export default {
         'card': 'rgb(var(--card-border))',
       },
       fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif', 'Embed code'],
       },
     },
   },

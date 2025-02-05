@@ -35,7 +35,7 @@ function SocialIcons() {
           href={social.href}
           target="_blank"
           rel="noopener noreferrer"
-          className={`text-zinc-400 dark:text-zinc-400 ${social.color} dark:hover:text-red-700 transition-colors duration-300`}
+          className={`text-zinc-500 dark:text-zinc-400 ${social.color} dark:hover:text-red-700 transition-colors duration-500`}
           whileHover={{ scale: 1.2, y: -1 }}
           whileTap={{ scale: 0.95 }}
           initial={{ opacity: 0, y: 20 }}
@@ -121,14 +121,14 @@ const Hero = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-red-600 hover:bg-red-700 text-white px-6 py-4 rounded-md transition-colors duration-300 font-semibold mb-6"
+            className="bg-red-600 hover:bg-red-700 text-white px-6 py-4 rounded-md transition-all duration-500 font-semibold mb-6"
           >
             <a download="Curriculo.pdf" href="/Curriculo.pdf">
               Download CV
             </a>
           </motion.button>
 
-          <SocialIcons />
+          <SocialIcons/>
         </div>
         <motion.div
   data-aos-duration="1500"
