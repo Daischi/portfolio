@@ -3,7 +3,7 @@ import AOS from "aos"
 import "aos/dist/aos.css"
 import { Github, Linkedin, Phone } from "lucide-react"
 import { motion } from "framer-motion"
-import fotohero from "../assets/fotolinkedin.jpeg"
+import fotohero from "../assets/aaa.jpeg"
 
 function SocialIcons() {
   const socialLinks = [
