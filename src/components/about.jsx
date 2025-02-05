@@ -21,7 +21,7 @@ const About = () => {
 
 
 return (
-  <section id="sobre" className="flex justify-center items-center mt-4 overflow-hidden min-h-screen">
+  <section id="sobre" className="flex justify-center items-center overflow-hidden min-h-screen">
   <div className="w-full max-w-4xl p-6 rounded-lg text-white">
     <div className="text-center mb-6">
       <span data-aos="fade-right" className="underline underline-offset-8 decoration-red-600">
