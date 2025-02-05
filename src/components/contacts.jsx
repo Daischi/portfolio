@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, Mail, MapPin, Phone, Github, Linkedin, Check, AlertCircle, } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import "aos/dist/aos.css";
+
 
 
 
@@ -380,7 +382,7 @@ export function Contact() {
                         {formState.isSubmitted ? (
                           <>
                             <Check className="w-5 h-5" />
-                            Message sent successfully!
+                            Mensagem enviada com sucesso!
                           </>
                         ) : (
                           <>
@@ -403,3 +405,5 @@ export function Contact() {
 }
 
 export default Contact;
+
+
