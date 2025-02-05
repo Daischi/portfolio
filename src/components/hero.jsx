@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react"
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from "react"
 import AOS from "aos"
 import "aos/dist/aos.css"
 import { Github, Linkedin, Phone } from "lucide-react"
