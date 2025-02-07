@@ -7,7 +7,11 @@ import Foto from "../assets/github.webp"
 import tradutor from "../assets/tradutor.webp"
 import poppibooks from "../assets/poppibooks.webp"
 import poppitter from "../assets/poppitter.webp"
+import lista from "../assets/lista.webp"
 import PropTypes from "prop-types"
+
+
+
 
 const projects = [
   {
@@ -27,6 +31,17 @@ const projects = [
     demoLink: "https://daischi.github.io/Poppi__Books/",
     image: poppibooks,
   },
+
+  {
+    title: "Lista de Produtos",
+    description:
+      "Projeto de cadastro e listagem de produtos que exibe nome, valor e disponibilidade, ordenando pelo menor preço.",
+    tags: ["HTML", "CSS", "JavaScript"],
+    codeLink: "https://github.com/Daischi/Lista-de-Produtos",
+    demoLink: "https://lista-de-produtos-brown.vercel.app/",
+    image: lista,
+  },
+
   {
     title: "Tradutor de Linguas",
     description:
@@ -36,6 +51,8 @@ const projects = [
     demoLink: "https://tradutor-cxwozngvm-guilherme-poppi-limas-projects.vercel.app/",
     image: tradutor,
   },
+
+
   {
     title: "Cadastro de Usuarios",
     description:
@@ -193,6 +210,7 @@ function ProjectCarousel() {
                         : project.title === "Tradutor de Linguas"
                           ? "Uma ferramenta de tradução moderna e eficiente que suporta múltiplos idiomas."
                           : "Este projeto é um e-commerce de livros, atualmente com apenas a landing page. A página apresenta a proposta da plataforma, com um design moderno e responsivo, destacando benefícios como variedade de títulos e facilidade de compra."}
+                          
                   </motion.p>
                   <motion.div
                     initial={{ y: 10, opacity: 0 }}
