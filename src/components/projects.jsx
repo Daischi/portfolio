@@ -26,7 +26,7 @@ const projects = [
   {
     title: "Poppi Books",
     description: "Poppi Book é um site de vendas de livros, com uma seleção inicial de títulos na página principal.",
-    tags: ["HTML", "JavaScript", "CSS"],
+    tags: ["HTML", "CSS", "JavaScript"],
     codeLink: "https://github.com/Daischi/Poppi__Books",
     demoLink: "https://daischi.github.io/Poppi__Books/",
     image: poppibooks,
