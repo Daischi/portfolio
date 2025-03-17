@@ -25,10 +25,10 @@ const projects = [
 
   {
     title: "Intercompnet",
-    description: "Reformulação de um site de videogames e eletrônicos, transformado em uma loja de conserto de dispositivos.",
+    description: "Reformulação de um site de videogames e eletrônicos, criado para uma loja especializada em consertos.",
     tags: ["React", "Crypto", "TailwindCSS", "FontAwesome"],
     codeLink: "https://github.com/Daischi/Twitter-Clone",
-    demoLink: "https://twitter-clone-alpha-azure-89.vercel.app/",
+    demoLink: "https://intercompnet.vercel.app/",
     image: poppitter,
   },
 
