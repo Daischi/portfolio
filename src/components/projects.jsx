@@ -24,10 +24,10 @@ const projects = [
   },
 
   {
-    title: "Intercompnet",
+    title: "InterCompnet",
     description: "Reformulação de um site de videogames e eletrônicos, criado para uma loja especializada em consertos.",
     tags: ["React", "Crypto", "TailwindCSS", "FontAwesome"],
-    codeLink: "https://github.com/Daischi/Twitter-Clone",
+    codeLink: "https://github.com/Daischi/Intercompnet",
     demoLink: "https://intercompnet.vercel.app/",
     image: poppitter,
   },
@@ -215,15 +215,21 @@ function ProjectCarousel() {
                     {project.title === "Poppitter"
                       ? "Poppitter é um clone simplificado do Twitter, desenvolvido com React e Tailwind. Ele exibe tweets gerados aleatoriamente e permite ao usuário postar novos tweets com IDs únicos. A plataforma inclui uma interface limpa e funcional, simulando a experiência do Twitter."
 
-                      : project.title === "Lista de Produtos"
-                        ? "Este projeto é um sistema simples de cadastro e listagem de produtos desenvolvido com HTML, CSS e JavaScript. Ele permite que os usuários cadastrem produtos informando nome, descrição, valor e disponibilidade para venda. Os produtos cadastrados são exibidos em uma tabela ordenada pelo menor valor, e há um botão para adicionar novos produtos facilmente."
+
+                      : project.title === "InterCompnet"
+                        ? "Intercompnet é uma loja especializada em consertos de videogames, computadores e impressoras. Ao perceber que o site da empresa estava datado durante uma entrevista, reformulei o design e a funcionalidade. Desenvolvido com Next.js, Tailwind, TypeScript, ShadCN, Lucide e React, o projeto foca em uma interface moderna e eficiente."
 
 
-                        : project.title === "Cadastro de Usuarios"
-                          ? "Este projeto é um sistema simples de cadastro de usuários que permite registrar, visualizar e gerenciar informações básicas, como nome, idade e e-mail. Para armazenar e gerenciar os dados, utilizei uma API que eu mesmo desenvolvi, garantindo maior controle sobre o backend. Essa API está disponível no meu GitHub para quem quiser explorar ou contribuir com melhorias."
-                          : project.title === "Tradutor de Linguas"
-                            ? "Uma ferramenta de tradução moderna e eficiente que suporta múltiplos idiomas."
-                            : "Este projeto é um e-commerce de livros, atualmente com apenas a landing page. A página apresenta a proposta da plataforma, com um design moderno e responsivo, destacando benefícios como variedade de títulos e facilidade de compra."}
+
+                        : project.title === "Lista de Produtos"
+                          ? "Este projeto é um sistema simples de cadastro e listagem de produtos desenvolvido com HTML, CSS e JavaScript. Ele permite que os usuários cadastrem produtos informando nome, descrição, valor e disponibilidade para venda. Os produtos cadastrados são exibidos em uma tabela ordenada pelo menor valor, e há um botão para adicionar novos produtos facilmente."
+
+
+                          : project.title === "Cadastro de Usuarios"
+                            ? "Este projeto é um sistema simples de cadastro de usuários que permite registrar, visualizar e gerenciar informações básicas, como nome, idade e e-mail. Para armazenar e gerenciar os dados, utilizei uma API que eu mesmo desenvolvi, garantindo maior controle sobre o backend. Essa API está disponível no meu GitHub para quem quiser explorar ou contribuir com melhorias."
+                            : project.title === "Tradutor de Linguas"
+                              ? "Uma ferramenta de tradução moderna e eficiente que suporta múltiplos idiomas."
+                              : "Este projeto é um e-commerce de livros, atualmente com apenas a landing page. A página apresenta a proposta da plataforma, com um design moderno e responsivo, destacando benefícios como variedade de títulos e facilidade de compra."}
 
                   </motion.p>
                   <motion.div
