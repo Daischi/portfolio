@@ -24,8 +24,8 @@ const projects = [
   },
 
   {
-    title: "Poppitter",
-    description: "Clone simplificado do Twitter com React e Tailwind, exibindo tweets gerados aleatoriamente.",
+    title: "Intercompnet",
+    description: "Reformulação de um site de videogames e eletrônicos, transformado em uma loja de conserto de dispositivos.",
     tags: ["React", "Crypto", "TailwindCSS", "FontAwesome"],
     codeLink: "https://github.com/Daischi/Twitter-Clone",
     demoLink: "https://twitter-clone-alpha-azure-89.vercel.app/",
