@@ -7,6 +7,7 @@ import Foto from "../assets/github.webp"
 import tradutor from "../assets/tradutor.webp"
 import poppibooks from "../assets/poppibooks.webp"
 import poppitter from "../assets/poppitter.webp"
+import intercompnet from "../assets/intercompnet.png"
 import lista from "../assets/lista.webp"
 import PropTypes from "prop-types"
 
@@ -29,7 +30,7 @@ const projects = [
     tags: ["React", "Crypto", "TailwindCSS", "FontAwesome"],
     codeLink: "https://github.com/Daischi/Intercompnet",
     demoLink: "https://intercompnet.vercel.app/",
-    image: poppitter,
+    image: intercompnet,
   },
 
   {
