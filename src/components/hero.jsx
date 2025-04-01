@@ -52,7 +52,7 @@ function SocialIcons() {
 
 const Hero = () => {
   const [displayedText, setDisplayedText] = useState("")
-  const typewriterTexts = ["Front-End Developer", "Seja muito bem-vindo!!"]
+  const typewriterTexts = ["Full-Stack Developer", "Seja muito bem-vindo!!"]
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isImageAnimating, setIsImageAnimating] = useState(false)
 
@@ -129,30 +129,30 @@ const Hero = () => {
             </a>
           </motion.button>
 
-          <SocialIcons/>
+          <SocialIcons />
         </div>
         <motion.div
-  data-aos-duration="1500"
-  data-aos="fade-left"
-  className="relative w-[300px] h-[300px] md:w-[480px] md:h-[480px] overflow-hidden rounded-full border-solid dark:border-white/15 border-zinc-200 border-4 cursor-pointer mx-auto md:mx-0 mt-6 md:mt-0"
-  whileHover={{ scale: 1.05 }}
-  animate={
-    isImageAnimating
-      ? {
-          scale: [1, 1.2, 1],
-          rotate: [0, 360, 0],
-        }
-      : {}
-  }
-  transition={{ duration: 1, ease: "easeInOut" }}
-  onClick={handleImageClick}
->
-  <img
-    src={fotohero || "/placeholder.svg"}
-    alt="Hero Image"
-    className="w-full h-full object-cover transition-all duration-300"
-  />
-</motion.div>
+          data-aos-duration="1500"
+          data-aos="fade-left"
+          className="relative w-[300px] h-[300px] md:w-[480px] md:h-[480px] overflow-hidden rounded-full border-solid dark:border-white/15 border-zinc-200 border-4 cursor-pointer mx-auto md:mx-0 mt-6 md:mt-0"
+          whileHover={{ scale: 1.05 }}
+          animate={
+            isImageAnimating
+              ? {
+                scale: [1, 1.2, 1],
+                rotate: [0, 360, 0],
+              }
+              : {}
+          }
+          transition={{ duration: 1, ease: "easeInOut" }}
+          onClick={handleImageClick}
+        >
+          <img
+            src={fotohero || "/placeholder.svg"}
+            alt="Hero Image"
+            className="w-full h-full object-cover transition-all duration-300"
+          />
+        </motion.div>
 
       </div>
     </main>
